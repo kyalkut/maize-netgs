@@ -1,0 +1,32 @@
+model_metabolite,zhang_name,in_tableIII,free_mmol_per_gDW,source
+(2S)-2-Isopropylmalate,2-Isopropylmalic acid,no,,
+1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide,AICA ribonucleotide,no,,
+4-Coumarate,4-Coumaric acid,no,,
+ADP,Adenosine diphosphate (ADP),no,,
+Adenine,Adenine,no,,
+Adenosine,Adenosine,no,,
+Citrate,Citric acid,no,,
+Coniferyl aldehyde,Coniferylaldehyde,no,,
+Cytidine,Cytidine,no,,
+D-Glycerate,"(2R)-2,3-Dihydroxypropanoic acid",no,,
+D-Mannose 1-phosphate,Mannose 1-phosphate,no,,
+Ferulate,ferulic acid,no,,
+Guanine,Guanine,no,,
+Guanosine,Guanosine,no,,
+Hypoxanthine,Hypoxanthine,no,,
+Indole,Indole,no,,
+Inosine,Inosine,no,,
+Isocitrate,Isocitric acid,no,,
+L-Glutamate,Glutamic acid,yes,0.008319,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Leucine,leucine,yes,0.000646,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Methionine,Methionine,yes,0.00021,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Phenylalanine,Phenylalanine,yes,0.0004935,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Threonine,Threonine,yes,0.0010855,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Tryptophan,Tryptophan,yes,0.0004345,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+L-Tyrosine,Tyrosine,yes,0.000493,"Shu et al. 2022 Front Plant Sci 13:885794, Table 1 mean (umol/L extract; 20 mg DW in 1 mL -> x0.05 umol/gDW; assumes no further dilution)"
+N-Acetyl-L-glutamate,N-Acetyl-DL-glutamic acid,no,,
+S-Adenosyl-L-homocysteine,S-Adenosylhomocysteine,no,,
+Thymidine,Thymidine,no,,
+Uridine,Uridine,no,,
+Xanthosine,Xanthosine,no,,
+cis-Aconitate,Aconitic acid,no,,

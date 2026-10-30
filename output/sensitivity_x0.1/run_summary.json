@@ -1,0 +1,214 @@
+{
+ "param": {
+  "min_coverage": 0.9,
+  "max_sd_log2": 2.5,
+  "cap_quantiles": [
+   0.01,
+   0.99
+  ],
+  "default_free_frac_aa": 0.05,
+  "default_free_other": 0.001,
+  "placeholder_scale": 0.1,
+  "reference_line": "B73",
+  "light_uptake": 100.0,
+  "atp_maintenance": 30.0
+ },
+ "n_components": 61,
+ "n_varying": 31,
+ "M0": 531.5203036970001,
+ "kept": [
+  "(2S)-2-Isopropylmalate",
+  "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide",
+  "4-Coumarate",
+  "ADP",
+  "Adenine",
+  "Adenosine",
+  "Citrate",
+  "Coniferyl aldehyde",
+  "Cytidine",
+  "D-Glycerate",
+  "D-Mannose 1-phosphate",
+  "Ferulate",
+  "Guanine",
+  "Guanosine",
+  "Hypoxanthine",
+  "Indole",
+  "Inosine",
+  "Isocitrate",
+  "L-Glutamate",
+  "L-Leucine",
+  "L-Methionine",
+  "L-Phenylalanine",
+  "L-Threonine",
+  "L-Tryptophan",
+  "L-Tyrosine",
+  "N-Acetyl-L-glutamate",
+  "S-Adenosyl-L-homocysteine",
+  "Thymidine",
+  "Uridine",
+  "Xanthosine",
+  "cis-Aconitate"
+ ],
+ "dropped": [
+  [
+   "PP_Group_01385",
+   "AMP",
+   "noisy (SD log2 3.14)"
+  ],
+  [
+   "PP_Group_16961",
+   "GMP",
+   "coverage 0.84"
+  ],
+  [
+   "PP_Group_19453",
+   "Xanthurenic acid",
+   "not producible"
+  ],
+  [
+   "PP_Group_18652",
+   "Nicotinate D-ribonucleoside",
+   "not producible"
+  ],
+  [
+   "PP_Group_00936",
+   "N-Ribosylnicotinamide",
+   "not producible"
+  ],
+  [
+   "PP_Group_17436",
+   "Nicotinamide D-ribonucleotide",
+   "not producible"
+  ],
+  [
+   "PP_Group_01938",
+   "5'-Methylthioadenosine",
+   "not producible"
+  ],
+  [
+   "PP_Group_00589",
+   "Quercetin 3-O-glucoside",
+   "not producible"
+  ],
+  [
+   "PP_Group_00049",
+   "Raffinose",
+   "not producible"
+  ],
+  [
+   "PP_Group_21037",
+   "Betaine",
+   "not producible"
+  ],
+  [
+   "PP_Group_20873",
+   "5-Oxoproline",
+   "not producible"
+  ],
+  [
+   "PP_Group_07438",
+   "L-Arginine",
+   "not measured in both conditions"
+  ],
+  [
+   "PP_Group_00732",
+   "Benzoate",
+   "not producible"
+  ],
+  [
+   "PP_Group_00712",
+   "Pyridoxamine",
+   "not producible"
+  ],
+  [
+   "PP_Group_03356",
+   "UMP",
+   "coverage 0.84"
+  ],
+  [
+   "PP_Group_03065",
+   "Pantothenate",
+   "not producible"
+  ],
+  [
+   "PN_Group_02189",
+   "D-Glucarate",
+   "not producible"
+  ],
+  [
+   "PP_Group_20535",
+   "4-Coumarate",
+   "noisy (SD log2 2.53)"
+  ],
+  [
+   "PP_Group_00783",
+   "4-Coumarate",
+   "noisy (SD log2 2.69)"
+  ],
+  [
+   "PP_Group_21123",
+   "Choline",
+   "not producible"
+  ],
+  [
+   "PN_Group_24064",
+   "Riboflavin",
+   "not producible"
+  ]
+ ],
+ "producible": [
+  "(2S)-2-Isopropylmalate",
+  "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide",
+  "4-Coumarate",
+  "ADP",
+  "AMP",
+  "Adenine",
+  "Adenosine",
+  "Citrate",
+  "Coniferyl aldehyde",
+  "Cytidine",
+  "D-Glycerate",
+  "D-Mannose 1-phosphate",
+  "Ferulate",
+  "GMP",
+  "Guanine",
+  "Guanosine",
+  "Hypoxanthine",
+  "Indole",
+  "Inosine",
+  "Isocitrate",
+  "L-Arginine",
+  "L-Glutamate",
+  "L-Leucine",
+  "L-Methionine",
+  "L-Phenylalanine",
+  "L-Threonine",
+  "L-Tryptophan",
+  "L-Tyrosine",
+  "N-Acetyl-L-glutamate",
+  "S-Adenosyl-L-homocysteine",
+  "Thymidine",
+  "UMP",
+  "Uridine",
+  "Xanthosine",
+  "cis-Aconitate"
+ ],
+ "not_producible": [
+  "5'-Methylthioadenosine",
+  "5-Oxoproline",
+  "Benzoate",
+  "Betaine",
+  "Choline",
+  "D-Glucarate",
+  "N-Ribosylnicotinamide",
+  "Nicotinamide D-ribonucleotide",
+  "Nicotinate D-ribonucleoside",
+  "Pantothenate",
+  "Pyridoxamine",
+  "Quercetin 3-O-glucoside",
+  "Raffinose",
+  "Riboflavin",
+  "Xanthurenic acid"
+ ],
+ "tableIII_not_producible": []
+}

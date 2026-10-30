@@ -1,0 +1,13 @@
+reaction,name,equation_in_file,problem
+R_R00135_c,proline iminopeptidase,1 H2O_c -> 1 L-Proline_c,generic substrate stripped: creates/destroys a compound from water
+R_R00308_c,glycosyl hydrolase family 17 protein,1 H2O_c -> 1 D-Glucose_c,generic substrate stripped: creates/destroys a compound from water
+R_R01105_c,glycosyl hydrolase family 35 protein,1 H2O_c -> 1 D-Galactose_c,generic substrate stripped: creates/destroys a compound from water
+R_R01206_c,basic endochitinase,1 H2O_c -> 1 N-Acetyl-D-glucosamine_c,generic substrate stripped: creates/destroys a compound from water
+R_R01966_c,"glycosyl hydrolase family 1 protein / beta-glucosidase, putative (BG1)",1 D-Glucosamine_c -> 1 H2O_c,generic substrate stripped: creates/destroys a compound from water
+R_R01982_c,"exopolygalacturonase / galacturan 1,4-alpha-galacturonidase (PGA3) / pectinase",1 H2O_c -> 1 D-Galacturonate_c,generic substrate stripped: creates/destroys a compound from water
+R_R02334_c,basic endochitinase,1 H2O_c -> 1 N-Acetyl-D-glucosaminide_c,generic substrate stripped: creates/destroys a compound from water
+R_R02360_c,"polygalacturonase, putative / pectinase, putative",1 H2O_c -> 1 4-(4-Deoxy-beta-D-gluc-4-enuronosyl)-D-galacturonate_c,generic substrate stripped: creates/destroys a compound from water
+R_R02361_c,pectate lyase family protein,1 H2O_c -> 1 4-(4-Deoxy-alpha-D-gluc-4-enuronosyl)-D-galacturonate_c,generic substrate stripped: creates/destroys a compound from water
+R_R04937_c,"glycosyl hydrolase family 1 protein / beta-glucosidase, putative (BG1)",1 H2O_c -> 1 D-Xylose_c,generic substrate stripped: creates/destroys a compound from water
+R_R04938_c,"glycosyl hydrolase family 1 protein / beta-glucosidase, putative (BG1)",1 H2O_c -> 1 L-Arabinose_c,generic substrate stripped: creates/destroys a compound from water
+R_R04241_c,folylpolyglutamate synthase (fpgs2),1 ATP_c + 1 L-Glutamate_c <=> 1 ADP_c + 1 Orthophosphate_c,folate stripped: ATP synthesis from ADP+Pi when reversed

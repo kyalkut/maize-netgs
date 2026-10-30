@@ -1,0 +1,1306 @@
+[
+{
+"id": "R00157",
+"ec": "2.7.4.10",
+"name": "nucleoside-triphosphate--adenylate kinase ",
+"L": [
+[
+1.0,
+"S_UTP_c"
+],
+[
+1.0,
+"S_AMP_c"
+]
+],
+"R": [
+[
+1.0,
+"S_UDP_c"
+],
+[
+1.0,
+"S_ADP_c"
+]
+],
+"eq": " UTP_c +  AMP_c =  UDP_c +  ADP_c",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00159",
+"ec": "3.6.1.5",
+"name": "apyrase",
+"L": [
+[
+1.0,
+"S_UTP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_UDP_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": " UTP_c +  H2O_c =  UDP_c +  Orthophosphate_c",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00220",
+"ec": "4.3.1.17",
+"name": "threonine ammonia-lyase / threonine dehydratase / threonine deaminase (OMR1)",
+"L": [
+[
+1.0,
+"S_L_45_Serine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Pyruvate_c"
+],
+[
+1.0,
+"S_NH3_c"
+]
+],
+"eq": " L-Serine_c =  Pyruvate_c +  NH3_c",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00513",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_ATP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_ADP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "ATP + Cytidine = ADP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00514",
+"ec": "3.6.1.5",
+"name": "apyrase",
+"L": [
+[
+1.0,
+"S_CDP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_CMP_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": "CDP + H2O = CMP + Orthophosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00516",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_UTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_UDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "UTP + Cytidine = UDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00517",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_GTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_GDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "GTP + Cytidine = GDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00569",
+"ec": "3.6.1.5",
+"name": "apyrase",
+"L": [
+[
+1.0,
+"S_CTP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_CDP_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": "CTP + H2O = CDP + Orthophosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00962",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_ITP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_IDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "ITP + Cytidine = IDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00964",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_ATP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_ADP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "ATP + Uridine = ADP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00967",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_UTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_UDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "UTP + Uridine = UDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00968",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_GTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_GDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "GTP + Uridine = GDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R00970",
+"ec": "2.7.1.48",
+"name": "uridine kinase",
+"L": [
+[
+1.0,
+"S_ITP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_IDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "ITP + Uridine = IDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01080",
+"ec": "3.2.2.3",
+"name": "uridine nucleosidase",
+"L": [
+[
+1.0,
+"S_Uridine_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Uracil_c"
+],
+[
+1.0,
+"S_D_45_Ribose_c"
+]
+],
+"eq": "Uridine + H2O = Uracil + D-Ribose",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01131",
+"ec": "2.7.1.73",
+"name": "ATP:inosine 5'-phosphotransferase",
+"L": [
+[
+1.0,
+"S_ATP_c"
+],
+[
+1.0,
+"S_Inosine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_ADP_c"
+],
+[
+1.0,
+"S_IMP_c"
+]
+],
+"eq": "ATP + Inosine = ADP + IMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01134",
+"ec": "1.7.1.7",
+"name": "guanosine monophosphate reductase",
+"L": [
+[
+1.0,
+"S_IMP_c"
+],
+[
+1.0,
+"S_NH3_c"
+],
+[
+1.0,
+"S_NADP_43__c"
+]
+],
+"R": [
+[
+1.0,
+"S_GMP_c"
+],
+[
+1.0,
+"S_NADPH_c"
+],
+[
+1.0,
+"S_H_43__c"
+]
+],
+"eq": "IMP + NH3 + NADP+ = GMP + NADPH + H+",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01244",
+"ec": "3.5.4.2",
+"name": "Adenine aminohydrolase",
+"L": [
+[
+1.0,
+"S_Adenine_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Hypoxanthine_c"
+],
+[
+1.0,
+"S_NH3_c"
+]
+],
+"eq": "Adenine + H2O = Hypoxanthine + NH3",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01548",
+"ec": "2.7.1.48",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dATP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dADP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "dATP + Cytidine = dADP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01549",
+"ec": "2.7.1.49",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dATP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dADP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "dATP + Uridine = dADP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01561",
+"ec": "2.4.2.1",
+"name": "purine-nucleoside phosphorylase",
+"L": [
+[
+1.0,
+"S_Adenosine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Adenine_c"
+],
+[
+1.0,
+"S_alpha_45_D_45_Ribose_32_1_45_phosphate_c"
+]
+],
+"eq": "Adenosine + Orthophosphate = Adenine + alpha-D-Ribose 1-phosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01863",
+"ec": "2.4.2.1",
+"name": "inosine:orthophosphate ribosyltransferase",
+"L": [
+[
+1.0,
+"S_Inosine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Hypoxanthine_c"
+],
+[
+1.0,
+"S_alpha_45_D_45_Ribose_32_1_45_phosphate_c"
+]
+],
+"eq": "Inosine + Orthophosphate = Hypoxanthine + alpha-D-Ribose 1-phosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01876",
+"ec": "2.4.2.3",
+"name": "uridine phosphorylase ",
+"L": [
+[
+1.0,
+"S_Uridine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Uracil_c"
+],
+[
+1.0,
+"S_alpha_45_D_45_Ribose_32_1_45_phosphate_c"
+]
+],
+"eq": "Uridine + Orthophosphate = Uracil + alpha-D-Ribose 1-phosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01880",
+"ec": "2.7.1.48",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dGTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dGDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "dGTP + Uridine = dGDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R01967",
+"ec": "2.7.1.113",
+"name": "deoxyguanosine kinase",
+"L": [
+[
+1.0,
+"S_ATP_c"
+],
+[
+1.0,
+"S_Deoxyguanosine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_ADP_c"
+],
+[
+1.0,
+"S_dGMP_c"
+]
+],
+"eq": "ATP + Deoxyguanosine = ADP + dGMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02091",
+"ec": "2.7.1.49",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dGTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dGDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "dGTP + Cytidine = dGDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02092",
+"ec": "3.6.1.5",
+"name": "apyrase",
+"L": [
+[
+1.0,
+"S_dTDP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dTMP_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": "dTDP + H2O = dTMP + Orthophosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02095",
+"ec": "3.6.1.5",
+"name": "apyrase",
+"L": [
+[
+1.0,
+"S_dTTP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dTDP_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": "dTTP + H2O = dTDP + Orthophosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02096",
+"ec": "2.7.1.50",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dTTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dTDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "dTTP + Cytidine = dTDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02097",
+"ec": "2.7.1.51",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dTTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dTDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "dTTP + Uridine = dTDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02102",
+"ec": "3.1.3.5",
+"name": "2'-Deoxyuridine 5'-monophosphate phosphohydrolase",
+"L": [
+[
+1.0,
+"S_dUMP_c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Deoxyuridine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"eq": "dUMP + H2O = Deoxyuridine + Orthophosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02147",
+"ec": "2.4.2.1",
+"name": "purine-nucleoside phosphorylase",
+"L": [
+[
+1.0,
+"S_Guanosine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Guanine_c"
+],
+[
+1.0,
+"S_alpha_45_D_45_Ribose_32_1_45_phosphate_c"
+]
+],
+"eq": "Guanosine + Orthophosphate = Guanine + alpha-D-Ribose 1-phosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02297",
+"ec": "2.4.2.1",
+"name": "purine-nucleoside phosphorylase",
+"L": [
+[
+1.0,
+"S_Xanthosine_c"
+],
+[
+1.0,
+"S_Orthophosphate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Xanthine_c"
+],
+[
+1.0,
+"S_alpha_45_D_45_Ribose_32_1_45_phosphate_c"
+]
+],
+"eq": "Xanthosine + Orthophosphate = Xanthine + alpha-D-Ribose 1-phosphate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02327",
+"ec": "2.7.1.52",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dCTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dCDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "dCTP + Uridine = dCDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02332",
+"ec": "2.7.1.53",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dUTP_c"
+],
+[
+1.0,
+"S_Uridine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dUDP_c"
+],
+[
+1.0,
+"S_UMP_c"
+]
+],
+"eq": "dUTP + Uridine = dUDP + UMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02371",
+"ec": "2.7.1.54",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dCTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dCDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "dCTP + Cytidine = dCDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R02372",
+"ec": "2.7.1.55",
+"name": "uridine kinase ",
+"L": [
+[
+1.0,
+"S_dUTP_c"
+],
+[
+1.0,
+"S_Cytidine_c"
+]
+],
+"R": [
+[
+1.0,
+"S_dUDP_c"
+],
+[
+1.0,
+"S_CMP_c"
+]
+],
+"eq": "dUTP + Cytidine = dUDP + CMP",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R07441",
+"ec": null,
+"name": "ALDH2C4 (REDUCED EPIDERMAL FLUORESCENCE1); 3-chloroallyl aldehyde dehydrogenase/ aldehyde dehydrogenase (NAD)  [SP:sp:AL2C4_ARATH]",
+"L": [
+[
+1.0,
+"S_Sinapoyl_32_aldehyde_c"
+],
+[
+1.0,
+"S_NAD_43__c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Sinapate_c"
+],
+[
+1.0,
+"S_NADH_c"
+],
+[
+1.0,
+"S_H_43__c"
+]
+],
+"eq": "Sinapoyl aldehyde + NAD+ + H2O = Sinapate + NADH + H+",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "R07442",
+"ec": null,
+"name": "ALDH2C4 (REDUCED EPIDERMAL FLUORESCENCE1); 3-chloroallyl aldehyde dehydrogenase/ aldehyde dehydrogenase (NAD)  [SP:sp:AL2C4_ARATH]",
+"L": [
+[
+1.0,
+"S_Sinapoyl_32_aldehyde_c"
+],
+[
+1.0,
+"S_NADP_43__c"
+],
+[
+1.0,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Sinapate_c"
+],
+[
+1.0,
+"S_NADPH_c"
+],
+[
+1.0,
+"S_H_43__c"
+]
+],
+"eq": "Sinapoyl aldehyde + NADP+ + H2O = Sinapate + NADPH + H+",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "RN01",
+"ec": "NON ENZYMATIC REACTION",
+"name": "non enzymatic reaction",
+"L": [
+[
+1.0,
+"S_L_45_Glutamate_32_5_45_semialdehyde_c"
+]
+],
+"R": [
+[
+1.0,
+"S__40_S_41__45_1_45_Pyrroline_45_5_45_carboxylate_c"
+]
+],
+"eq": "L-Glutamate 5-semialdehyde = (S)-1-Pyrroline-5-carboxylate ",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": true
+},
+{
+"id": "RN03",
+"ec": null,
+"name": "Glucose isomeres",
+"L": [
+[
+1.0,
+"S_Glucose_c"
+]
+],
+"R": [
+[
+1.0,
+"S_alpha_45_D_45_Glucose_c"
+]
+],
+"eq": "Glucose = alpha-D-Glucose",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": true
+},
+{
+"id": "RN04",
+"ec": null,
+"name": "Oxidative phosphorilation (overall in mitochondria)",
+"L": [
+[
+2.4,
+"S_Orthophosphate_c"
+],
+[
+2.4,
+"S_ADP_c"
+],
+[
+1.0,
+"S_NADH_c"
+],
+[
+1.0,
+"S_H_43__c"
+],
+[
+0.5,
+"S_Oxygen_c"
+]
+],
+"R": [
+[
+1.0,
+"S_H2O_c"
+],
+[
+1.0,
+"S_NAD_43__c"
+],
+[
+2.4,
+"S_ATP_c"
+]
+],
+"eq": "2.4 Orthophosphate + 2.4 ADP + NADH + H+ + 0.5 Oxygen = H2O + NAD+ + 2.4 ATP ",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "RN05",
+"ec": null,
+"name": "Oxidative phosphorilation (overall in mitochondria)",
+"L": [
+[
+1.5,
+"S_Orthophosphate_c"
+],
+[
+1.5,
+"S_ADP_c"
+],
+[
+1.0,
+"S_FADH2_c"
+],
+[
+0.5,
+"S_Oxygen_c"
+]
+],
+"R": [
+[
+1.0,
+"S_H2O_c"
+],
+[
+1.0,
+"S_FAD_c"
+],
+[
+1.5,
+"S_ATP_c"
+]
+],
+"eq": "1.5 Orthophosphate + 1.5 ADP + FADH2 + 0.5 Oxygen = H2O + FAD + 1.5 ATP ",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": false
+},
+{
+"id": "RN06",
+"ec": "NON ENZYMATIC REACTION",
+"name": "non enzymatic reaction",
+"L": [
+[
+2.0,
+"S_Monodehydroascorbate_c"
+]
+],
+"R": [
+[
+1.0,
+"S_Ascorbate_c"
+],
+[
+1.0,
+"S_L_45_Dehydroascorbate_c"
+]
+],
+"eq": "2 Monodehydroascorbate = Ascorbate + L-Dehydroascorbate",
+"source": "Dal'Molin 2010 Table S1",
+"reversible": true
+},
+{
+"id": "H2O2_c_to_x",
+"ec": "",
+"name": "H2O2 transport cytosol->peroxisome (gap-fill, added by us)",
+"L": [
+[
+1,
+"S_H2O2_c"
+]
+],
+"R": [
+[
+1,
+"S_H2O2_x"
+]
+],
+"eq": "H2O2_c = H2O2_x",
+"source": "manual",
+"reversible": true
+},
+{
+"id": "R00158",
+"ec": "2.7.4.22",
+"name": "UMP kinase (gap-fill, added by us)",
+"L": [
+[
+1,
+"S_ATP_c"
+],
+[
+1,
+"S_UMP_c"
+]
+],
+"R": [
+[
+1,
+"S_ADP_c"
+],
+[
+1,
+"S_UDP_c"
+]
+],
+"eq": "ATP + UMP = ADP + UDP",
+"source": "manual",
+"reversible": false
+},
+{
+"id": "R01082_c",
+"ec": "4.2.1.2",
+"name": "cytosolic fumarase (FUM2-like; gap-fill, added by us)",
+"L": [
+[
+1,
+"S_Fumarate_c"
+],
+[
+1,
+"S_H2O_c"
+]
+],
+"R": [
+[
+1,
+"S__40_S_41__45_Malate_c"
+]
+],
+"eq": "Fumarate_c + H2O_c = (S)-Malate_c",
+"source": "manual",
+"reversible": true
+}
+]

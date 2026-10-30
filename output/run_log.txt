@@ -1,0 +1,51 @@
+STEP 1  load
+  curation: +46 gap-fill reactions (Table S1 + manual), 12 broken reactions blocked, 28 reactions set irreversible by EC rules
+  model: 1432 species x 1289 reactions; Zhang: 3890 features, 385 lines; Table III: 37 components
+  Table III BOF mass = 529.3 mg per unit biomass (not 1000 mg: Table III covers only part of dry mass)
+STEP 2  map
+  52 curated Zhang features mapped to 50 model metabolites
+STEP 3  producibility (autotrophic: CO2 + light + N/S/P)
+  Table III components producible: 37/37; not producible: []
+  mapped metabolites producible: 35/50; not producible: ["5'-Methylthioadenosine", '5-Oxoproline', 'Benzoate', 'Betaine', 'Choline', 'D-Glucarate', 'N-Ribosylnicotinamide', 'Nicotinamide D-ribonucleotide', 'Nicotinate D-ribonucleoside', 'Pantothenate', 'Pyridoxamine', 'Quercetin 3-O-glucoside', 'Raffinose', 'Riboflavin', 'Xanthurenic acid']
+STEP 4  clean data
+  kept 31 metabolites; dropped 21 features
+    - PP_Group_01385   AMP                                 noisy (SD log2 3.14)
+    - PP_Group_16961   GMP                                 coverage 0.84
+    - PP_Group_19453   Xanthurenic acid                    not producible
+    - PP_Group_18652   Nicotinate D-ribonucleoside         not producible
+    - PP_Group_00936   N-Ribosylnicotinamide               not producible
+    - PP_Group_17436   Nicotinamide D-ribonucleotide       not producible
+    - PP_Group_01938   5'-Methylthioadenosine              not producible
+    - PP_Group_00589   Quercetin 3-O-glucoside             not producible
+    - PP_Group_00049   Raffinose                           not producible
+    - PP_Group_21037   Betaine                             not producible
+    - PP_Group_20873   5-Oxoproline                        not producible
+    - PP_Group_07438   L-Arginine                          not measured in both conditions
+    - PP_Group_00732   Benzoate                            not producible
+    - PP_Group_00712   Pyridoxamine                        not producible
+    - PP_Group_03356   UMP                                 coverage 0.84
+    - PP_Group_03065   Pantothenate                        not producible
+    - PN_Group_02189   D-Glucarate                         not producible
+    - PP_Group_20535   4-Coumarate                         noisy (SD log2 2.53)
+    - PP_Group_00783   4-Coumarate                         noisy (SD log2 2.69)
+    - PP_Group_21123   Choline                             not producible
+    - PN_Group_24064   Riboflavin                          not producible
+STEP 5  relative factors (anchor = WW mean, same for both conditions)
+  L-Tryptophan     median r  WW=1.00  DS=4.48
+  L-Methionine     median r  WW=1.04  DS=0.38
+  L-Glutamate      median r  WW=1.01  DS=1.02
+STEP 6  anchors (absolute free-pool amounts, mmol/gDW)
+  31 anchors; 24 are placeholders -> replace with literature values in curation/anchors.csv
+STEP 7  two-pool coefficients  b = b_bound + b_free * r
+STEP 8  mass renormalisation (fixed part rescaled, measured differences kept)
+  WW: target mass 536.3 mg; per-line mass range 536.30-536.30; fixed-part scale 0.9839-1.0049
+  DS: target mass 536.3 mg; per-line mass range 536.30-536.30; fixed-part scale 0.9782-1.0037
+STEP 9  export
+  61 BOF components (31 vary by line) x 385 lines, WW and DS
+  rescaling trace: rescaling_trace.csv (long), relative_factors_*.csv, free_pool_mmol_*.csv (metabolites x lines)
+STEP 10 QC: feasibility of every line-specific BOF (single-cell network)
+  WW: max biomass flux per line: min 0.495, mean 0.4962, max 0.4977; infeasible lines: 0
+  DS: max biomass flux per line: min 0.4935, mean 0.4956, max 0.4976; infeasible lines: 0
+  reference B73: WW 0.4967, DS 0.4947
+  energy-loop check: ATP regenerated without light = -0  ->  no loops
+  figure: output/qc_bof_coefficients.png
