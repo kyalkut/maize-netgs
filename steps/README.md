@@ -9,4 +9,5 @@ Copies of each step's inputs and outputs. Made by `make_steps.py`; the scripts s
 - `05_netgs_step1/`: Per DS line: s_model, growth rescaling from dry mass, B73 reference (pFBA), QP closest to reference.
 - `06_data_analyses/`: G x E consistency per BOF metabolite (WW vs DS line correlation); ridge CV prediction of DS dry mass.
 - `08_fluxsum/`: Flux-sum phi = 1/2 sum|S_ij v_j| of each measured metabolite per DS line (from step 05 fluxes); Spearman r with the measured DS log2 level across lines.
+- `09_model_comparison/`: C4GEM vs Simons et al. 2014 vs Bogart & Myers 2016 (iEB5204, iEB2140x2): size, cells, genes, biomass, overlap with Zhang metabolites.
 - `07_validation_arabidopsis/`: Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).

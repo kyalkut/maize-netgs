@@ -14,3 +14,7 @@ __pycache__/
 
 # Local netGS clone for validation
 netGS/
+
+# Third-party model files (see input/other_models/README.md)
+input/other_models/*
+!input/other_models/README.md

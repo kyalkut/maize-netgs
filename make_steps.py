@@ -62,6 +62,12 @@ STEPS = [
                   'output/fluxsum_summary_DS_paper_cvxpy_ser.json', 'output/fig_fluxsum.png'],
          note='Zhang log2 values: see 02_metabolite_selection/inputs. Main variant excludes the biomass reaction (circular); '
               'rho_level_phi_with_bof includes it.'),
+    dict(name='09_model_comparison',
+         what='C4GEM vs Simons et al. 2014 vs Bogart & Myers 2016 (iEB5204, iEB2140x2): size, cells, genes, biomass, overlap with Zhang metabolites.',
+         scripts='compare_models.py',
+         inputs=['input/other_models/README.md', 'curation/bof_tableIII.csv', 'output/bof_components.csv'],
+         outputs=['output/model_comparison_summary.json', 'output/model_comparison_zhang_overlap.csv'],
+         note='Model files are third-party downloads (not copied, not in git): see inputs/README.md for sources. Zhang data: see 02_metabolite_selection/inputs.'),
     dict(name='07_validation_arabidopsis',
          what='Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).',
          scripts='validation/validate_arabidopsis.py, validation/compare_objectives.py (NETGS_REPO = netGS repo netGS/ folder)',
