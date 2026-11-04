@@ -1,5 +1,6 @@
 # Large third-party data: download Zhang et al. 2021 Additional file 2 into input/ (see README.md)
 input/Zhang2021_AdditionalFile2.xlsx
+steps/**/Zhang2021_AdditionalFile2.xlsx
 
 # Cache rebuilt by bof_pipeline.py
 output/cache_zhang.pkl

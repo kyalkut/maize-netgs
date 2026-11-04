@@ -6,6 +6,12 @@ from model_curation import curate
 from netgs_step1 import genotype_fluxes
 OBJ = os.environ.get('NETGS_OBJ', 'paper'); NMAX = int(os.environ.get('NETGS_N', '100000'))
 cond = os.environ.get('NETGS_COND', 'DS')
+SOLVER = os.environ.get('NETGS_SOLVER', 'cvxpy')
+TAG = OBJ + ('_osqp' if SOLVER == 'osqp' and OBJ == 'paper' else '_cvxpy' if SOLVER == 'cvxpy' else '')
+# phosphorylated serine pathway: zero in B73 but needed by 67 high-purine lines on the B73-active network ('none' = off)
+EXTRA = os.environ.get('NETGS_EXTRA', 'R_R01513_c,R_R04173_c,R_R00582_c')
+EXTRA = [] if EXTRA.lower() == 'none' else EXTRA.split(',')
+if EXTRA: TAG += '_ser'
 m = bp.read_sbml(bp.P['model']); curate(m, bp.P['model'], bp.P['gapfill'], bp.P['broken'])
 bp.PARAM['light_uptake'] = 100.0; net = bp.autotrophic_bounds(m)
 rows = list(csv.reader(open(os.path.join(bp.P['out'], f'biomreaction_{cond}.csv')))); hdr = rows[0]; lines = hdr[3:]
@@ -28,14 +34,15 @@ sub = None
 if ck:
     a_, b_ = map(int, ck.split(':')); sub = set(range(a_, min(b_, len(keep))))
 r = genotype_fluxes(S, lb, ub, jb, B[:, keep], dm[keep], ref=list(keep).index(lines.index('B73')) if lines.index('B73') in keep else 0,
-                    objective=OBJ, ref_bof=B[:, lines.index('B73')], smodel=os.environ.get('NETGS_SMODEL', 'mean'), qp_subset=sub)
-print(f'{len(keep)} lines, objective={OBJ}, {time.time()-t0:.0f}s; active reactions in reference: {len(r["nonzero"])}; '
+                    objective=OBJ, ref_bof=B[:, lines.index('B73')], smodel=os.environ.get('NETGS_SMODEL', 'mean'), qp_subset=sub,
+                    solver=SOLVER, extra_rxns=[net['rxns'].index(x) for x in EXTRA])
+print(f'{len(keep)} lines, objective={OBJ}, solver={SOLVER}, {time.time()-t0:.0f}s; active reactions in reference: {len(r["nonzero"])}; '
       f's_model={r["s_model"]:.4g} (min {r["zmax"].min():.4g}); status: { {s: r["status"].count(s) for s in set(r["status"])} }')
 rx = net['rxns'] + ['BIOMASS']
 if ck:
-    np.save(os.path.join(bp.P['out'], f'netgs_part_{cond}_{OBJ}_{ck.replace(":","-")}.npy'), dict(fluxes=r['fluxes'], status=r['status'], nonzero=r['nonzero'], vref=r['vref'], target=r['target'], half=r['halfwidth'], s_model=r['s_model'], zmax=r['zmax'], keep=keep, lines=lines, rx=rx), allow_pickle=True)
+    np.save(os.path.join(bp.P['out'], f'netgs_part_{cond}_{TAG}_{ck.replace(":","-")}.npy'), dict(fluxes=r['fluxes'], status=r['status'], nonzero=r['nonzero'], vref=r['vref'], target=r['target'], half=r['halfwidth'], s_model=r['s_model'], zmax=r['zmax'], keep=keep, lines=lines, rx=rx), allow_pickle=True)
     print('chunk', ck, 'done', time.time()-t0); sys.exit(0)
-out = os.path.join(bp.P['out'], f'netgs_fluxes_{cond}_{OBJ}.csv')
+out = os.path.join(bp.P['out'], f'netgs_fluxes_{cond}_{TAG}.csv')
 with open(out, 'w', newline='') as f:
     w = csv.writer(f); w.writerow(['reaction', 'v_ref_B73'] + [lines[k] for k in keep])
     for a, j in enumerate(r['nonzero']):
@@ -45,5 +52,5 @@ print('biomass flux vs target: corr %.4f, max abs dev %.2e (window +/- %.2e)' % 
       np.nanmax(np.abs(r['fluxes'][kb] - r['target'])), r['halfwidth']))
 json.dump(dict(objective=OBJ, n_lines=int(len(keep)), s_model=float(r['s_model']), zmax_min=float(r['zmax'].min()),
                halfwidth=float(r['halfwidth']), n_active=int(len(r['nonzero'])), status={s: r['status'].count(s) for s in set(r['status'])}),
-          open(os.path.join(bp.P['out'], f'netgs_summary_{cond}_{OBJ}.json'), 'w'), indent=1)
+          open(os.path.join(bp.P['out'], f'netgs_summary_{cond}_{TAG}.json'), 'w'), indent=1)
 print('written', out)

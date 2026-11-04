@@ -1,8 +1,10 @@
-"""Merge chunked netGS step-1 runs, write the flux table, summarise and plot."""
+"""Merge chunked netGS step-1 runs, write the flux table, summarise and plot.
+NETGS_TAG picks the run (default paper_cvxpy_ser; part files from run_netgs_maize.py with NETGS_CHUNK)."""
 import os, glob, json, csv, numpy as np
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
-parts = sorted(glob.glob(os.path.join(OUT, 'netgs_part_DS_paper_*.npy')))
+TAG = os.environ.get('NETGS_TAG', 'paper_cvxpy_ser')
+parts = sorted(glob.glob(os.path.join(OUT, f'netgs_part_DS_{TAG}_[0-9]*.npy')))
 P0 = np.load(parts[0], allow_pickle=True).item(); F = np.full_like(P0['fluxes'], np.nan); status = list(P0['status'])
 for p in parts:
     d = np.load(p, allow_pickle=True).item()
@@ -10,7 +12,7 @@ for p in parts:
         if s != 'skipped': F[:, i] = d['fluxes'][:, i]; status[i] = s
 nz, vref, keep, lines, rx = P0['nonzero'], P0['vref'], P0['keep'], P0['lines'], P0['rx']
 names = [rx[j] for j in nz]; kb = names.index('BIOMASS'); L = [lines[k] for k in keep]
-with open(os.path.join(OUT, 'netgs_fluxes_DS_paper.csv'), 'w', newline='') as f:
+with open(os.path.join(OUT, f'netgs_fluxes_DS_{TAG}.csv'), 'w', newline='') as f:
     w = csv.writer(f); w.writerow(['reaction', 'v_ref_B73'] + L)
     for a, j in enumerate(nz): w.writerow([rx[j], f'{vref[j]:.6g}'] + [f'{x:.6g}' for x in F[a]])
 bio = F[kb]; tgt = P0['target']; half = P0['half']
@@ -25,7 +27,7 @@ summary = dict(n_lines=int(len(L)), n_reactions=int(len(nz)), status={s: status.
                median_cv_raw=float(np.nanmedian(cv_raw)), median_cv_after_growth_normalisation=float(np.nanmedian(cv_norm)),
                share_reactions_r_bio_gt_0_9=float(np.nanmean(r_bio > 0.9)),
                top_variable_reactions_after_normalisation=[(names[a], float(cv_norm[a])) for a in order[:12]])
-json.dump(summary, open(os.path.join(OUT, 'netgs_summary_DS_paper.json'), 'w'), indent=1)
+json.dump(summary, open(os.path.join(OUT, f'netgs_summary_DS_{TAG}.json'), 'w'), indent=1)
 print(json.dumps({k: v for k, v in summary.items() if k != 'top_variable_reactions_after_normalisation'}, indent=1))
 for n, v in summary['top_variable_reactions_after_normalisation']: print(f'  {n:22} CV {v:.3f}')
 # figure
@@ -42,4 +44,4 @@ ax.plot(np.arange(1, len(v) + 1), v, color=ORANGE, lw=2)
 ax.set_xlabel('reactions, ranked'); ax.set_ylabel('CV across lines (fluxes per unit growth)')
 ax.set_title('Flux variation beyond growth differences', fontsize=10, loc='left', color=INK); ax.grid(color=GRID, lw=0.6); ax.set_axisbelow(True)
 fig.tight_layout(); fig.savefig(os.path.join(OUT, 'fig_netgs_fluxes.png'), dpi=160)
-print('written netgs_fluxes_DS_paper.csv, netgs_summary_DS_paper.json, fig_netgs_fluxes.png')
+print(f'written netgs_fluxes_DS_{TAG}.csv, netgs_summary_DS_{TAG}.json, fig_netgs_fluxes.png')
