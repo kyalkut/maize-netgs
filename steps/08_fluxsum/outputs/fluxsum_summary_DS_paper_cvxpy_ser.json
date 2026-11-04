@@ -1,0 +1,58 @@
+{
+ "tag": "paper_cvxpy_ser",
+ "n_lines": 371,
+ "n_metabolites": 50,
+ "n_constant_phi": 14,
+ "bof": {
+  "rho_level_phi": {
+   "n": 31,
+   "median": 0.09352877032601002,
+   "n_pos_gt_0_2": 14,
+   "n_neg_lt_m0_2": 0
+  },
+  "rho_level_phi_per_growth": {
+   "n": 31,
+   "median": 0.905584643966604,
+   "n_pos_gt_0_2": 22,
+   "n_neg_lt_m0_2": 1
+  },
+  "rho_level_phi_with_bof": {
+   "n": 31,
+   "median": 0.16140171124955058,
+   "n_pos_gt_0_2": 14,
+   "n_neg_lt_m0_2": 0
+  },
+  "rho_level_growth": {
+   "n": 31,
+   "median": -0.005559803786562191,
+   "n_pos_gt_0_2": 0,
+   "n_neg_lt_m0_2": 1
+  }
+ },
+ "not_bof": {
+  "rho_level_phi": {
+   "n": 5,
+   "median": -0.009950520741742049,
+   "n_pos_gt_0_2": 0,
+   "n_neg_lt_m0_2": 0
+  },
+  "rho_level_phi_per_growth": {
+   "n": 5,
+   "median": -0.12271550140185222,
+   "n_pos_gt_0_2": 2,
+   "n_neg_lt_m0_2": 0
+  },
+  "rho_level_phi_with_bof": {
+   "n": 5,
+   "median": -0.009950520741742049,
+   "n_pos_gt_0_2": 0,
+   "n_neg_lt_m0_2": 0
+  },
+  "rho_level_growth": {
+   "n": 19,
+   "median": -0.004754467653312745,
+   "n_pos_gt_0_2": 0,
+   "n_neg_lt_m0_2": 0
+  }
+ }
+}

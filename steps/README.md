@@ -8,4 +8,5 @@ Copies of each step's inputs and outputs. Made by `make_steps.py`; the scripts s
 - `04_bof_feasibility_and_sensitivity/`: Max biomass of all 770 BOFs (FBA); placeholder anchors x0.1 and x10.
 - `05_netgs_step1/`: Per DS line: s_model, growth rescaling from dry mass, B73 reference (pFBA), QP closest to reference.
 - `06_data_analyses/`: G x E consistency per BOF metabolite (WW vs DS line correlation); ridge CV prediction of DS dry mass.
+- `08_fluxsum/`: Flux-sum phi = 1/2 sum|S_ij v_j| of each measured metabolite per DS line (from step 05 fluxes); Spearman r with the measured DS log2 level across lines.
 - `07_validation_arabidopsis/`: Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).
