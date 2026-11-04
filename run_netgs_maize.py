@@ -12,6 +12,10 @@ TAG = OBJ + ('_osqp' if SOLVER == 'osqp' and OBJ == 'paper' else '_cvxpy' if SOL
 EXTRA = os.environ.get('NETGS_EXTRA', 'R_R01513_c,R_R04173_c,R_R00582_c')
 EXTRA = [] if EXTRA.lower() == 'none' else EXTRA.split(',')
 if EXTRA: TAG += '_ser'
+# RuBisCO carboxylation/oxygenation bounds lo <= vc/vo <= hi on the plastid pair, e.g. "22.2:88.0" (maize, C4GEM;
+# Wang et al. 2012 BMC Syst Biol 6 S2:S9, 100-1000 ubar CO2); netGS Arabidopsis used 0.938:3.814 ('none' = off)
+CO = os.environ.get('NETGS_CO', 'none')
+if CO.lower() != 'none': TAG += '_co'
 m = bp.read_sbml(bp.P['model']); curate(m, bp.P['model'], bp.P['gapfill'], bp.P['broken'])
 bp.PARAM['light_uptake'] = 100.0; net = bp.autotrophic_bounds(m)
 rows = list(csv.reader(open(os.path.join(bp.P['out'], f'biomreaction_{cond}.csv')))); hdr = rows[0]; lines = hdr[3:]
@@ -28,14 +32,19 @@ S = np.hstack([net['S'], B[:, [lines.index('B73')]]]); lb = np.append(net['lb'],
 Z = bp.load_zhang(bp.P['zhang'], bp.P['cache'])
 dm = np.array([Z['s1'].get(l, {}).get('dry') or np.nan for l in lines], float)
 keep = np.where(np.isfinite(dm))[0][:NMAX]
+extra_ub = None
+if CO.lower() != 'none':
+    lo_r, hi_r = map(float, CO.split(':')); jc, jo = net['rxns'].index('R_R00024_p'), net['rxns'].index('R_R03140_p')
+    A = np.zeros((2, S.shape[1])); A[0, jc], A[0, jo] = 1, -hi_r; A[1, jc], A[1, jo] = -1, lo_r   # vc - hi*vo <= 0, lo*vo - vc <= 0
+    extra_ub = (A, np.zeros(2))
 t0 = time.time()
-ck = os.environ.get('NETGS_CHUNK')   # e.g. "0:60" -> QP only for these line positions, saved to a part file
+ck =os.environ.get('NETGS_CHUNK')   # e.g. "0:60" -> QP only for these line positions, saved to a part file
 sub = None
 if ck:
     a_, b_ = map(int, ck.split(':')); sub = set(range(a_, min(b_, len(keep))))
 r = genotype_fluxes(S, lb, ub, jb, B[:, keep], dm[keep], ref=list(keep).index(lines.index('B73')) if lines.index('B73') in keep else 0,
                     objective=OBJ, ref_bof=B[:, lines.index('B73')], smodel=os.environ.get('NETGS_SMODEL', 'mean'), qp_subset=sub,
-                    solver=SOLVER, extra_rxns=[net['rxns'].index(x) for x in EXTRA])
+                    solver=SOLVER, extra_rxns=[net['rxns'].index(x) for x in EXTRA], extra_ub=extra_ub)
 print(f'{len(keep)} lines, objective={OBJ}, solver={SOLVER}, {time.time()-t0:.0f}s; active reactions in reference: {len(r["nonzero"])}; '
       f's_model={r["s_model"]:.4g} (min {r["zmax"].min():.4g}); status: { {s: r["status"].count(s) for s in set(r["status"])} }')
 rx = net['rxns'] + ['BIOMASS']

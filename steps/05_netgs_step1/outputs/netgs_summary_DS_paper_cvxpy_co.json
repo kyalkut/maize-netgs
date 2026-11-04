@@ -1,0 +1,11 @@
+{
+ "objective": "paper",
+ "n_lines": 371,
+ "s_model": 0.4862910565321328,
+ "zmax_min": 0.4862910565321328,
+ "halfwidth": 0.005083408950361149,
+ "n_active": 291,
+ "status": {
+  "solved": 371
+ }
+}
