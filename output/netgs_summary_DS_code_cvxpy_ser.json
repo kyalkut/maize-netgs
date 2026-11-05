@@ -1,9 +1,9 @@
 {
  "objective": "code",
  "n_lines": 371,
- "s_model": 0.4934913912055877,
+ "s_model": 0.49553983087098663,
  "zmax_min": 0.4934913912055877,
- "halfwidth": 0.005158694166090687,
+ "halfwidth": 0.005180112229154763,
  "n_active": 289,
  "status": {
   "solved": 371
