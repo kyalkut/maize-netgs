@@ -85,6 +85,15 @@ STEPS = [
          inputs=['input/other_models/README.md', 'curation/bof_tableIII.csv', 'output/bof_components.csv'],
          outputs=['output/model_comparison_summary.json', 'output/model_comparison_zhang_overlap.csv'],
          note='Model files are third-party downloads (not copied, not in git): see inputs/README.md for sources. Zhang data: see 02_metabolite_selection/inputs.'),
+    dict(name='11_netgs_steps2-4',
+         what="Genotypes (ZEAMAP AMP SNPs, B73 v4) -> kernel K = ZZ'; netGS step 2 (rrBLUP per flux, 50 x 3-fold CV), step 3 (QP towards predicted fluxes with the test line's BOF), step 4 (r with DS dry mass) vs classical GS on dry mass; both BOF variants.",
+         scripts='snp_prepare.py; netgs_steps234.py (NETGS_TAG = step-1 run, NETGS_OBJ3 = code/paper, BOF_OUT = variant folder)',
+         inputs=['output/snp_line_match.csv', 'output/netgs_foldid_DS.csv'],
+         outputs=['output/snp_summary.json', 'output/snp_kernel_DS.npz'] +
+                 [f'output/{v}netgs_step2_accuracy_DS_{t}.csv' for v in ('', 'no24/') for t in ('paper_cvxpy_ser', 'code_cvxpy_ser', 'paper_cvxpy_co')] +
+                 [f'output/{v}netgs_step34_{k}DS_{t}_{o}.{e}' for v in ('', 'no24/') for t in ('paper_cvxpy_ser', 'code_cvxpy_ser', 'paper_cvxpy_co')
+                  for o in ('paper', 'code') for k, e in (('', 'json'), ('folds_', 'csv'))],
+         note='The VCF (208 MB, input/snp/) is not copied: ftp.cngb.org/pub/CNSA/data3/CNP0001565/zeamap/02_Variants/SNPs/AMP_SNP_anno.vcf.gz.'),
     dict(name='07_validation_arabidopsis',
          what='Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).',
          scripts='validation/validate_arabidopsis.py, validation/compare_objectives.py (NETGS_REPO = netGS repo netGS/ folder)',

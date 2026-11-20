@@ -1,0 +1,27 @@
+{
+ "tag": "paper_cvxpy_ser",
+ "step3_objective": "code",
+ "n_lines": 353,
+ "n_snps": 796846,
+ "n_reactions": 269,
+ "replicates": 50,
+ "folds": 3,
+ "netgs_accuracy_mean": 0.2963110620830807,
+ "netgs_accuracy_sd": 0.09349176509336264,
+ "classical_gs_drymass_mean": 0.3252930419185818,
+ "classical_gs_drymass_sd": 0.08269311473179707,
+ "gs_on_biomass_flux_mean": 0.3249926911028313,
+ "biomass_flux_prediction_accuracy_mean": 0.3244412407784032,
+ "netgs_minus_gs_mean": -0.028981979835501073,
+ "share_folds_netgs_better": 0.2733333333333333,
+ "n_reactions_selected_median": 177.0,
+ "n_reactions_selected_range": [
+  25,
+  219
+ ],
+ "step2_accuracy_median_over_reactions": 0.3252846796652791,
+ "qp_status": {
+  "optimal": 17650
+ },
+ "seconds": 32
+}

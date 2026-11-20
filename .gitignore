@@ -23,3 +23,6 @@ input/other_models/*
 literature/anchor_sources/*/
 # Local drafts (emails)
 drafts/
+
+# SNP genotypes (ZEAMAP AMP VCF, 208 MB; see snp_prepare.py)
+input/snp/

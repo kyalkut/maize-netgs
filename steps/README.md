@@ -11,4 +11,5 @@ Copies of each step's inputs and outputs. Made by `make_steps.py`; the scripts s
 - `08_fluxsum/`: Flux-sum phi = 1/2 sum|S_ij v_j| of each measured metabolite per DS line (from step 05 fluxes); Spearman r with the measured DS log2 level across lines.
 - `10_variant_without_24/`: Variant: the 24 metabolites without a literature anchor left out (BOF = Table III + 7 amino acids, 37 components, 1 g DW); BOFs, netGS step 1 (paper/code x serine pathway/RuBisCO bounds), FluxSum, data analyses; compared with the main run (61 components).
 - `09_model_comparison/`: C4GEM vs Simons et al. 2014 vs Bogart & Myers 2016 (iEB5204, iEB2140x2): size, cells, genes, biomass, overlap with Zhang metabolites.
+- `11_netgs_steps2-4/`: Genotypes (ZEAMAP AMP SNPs, B73 v4) -> kernel K = ZZ'; netGS step 2 (rrBLUP per flux, 50 x 3-fold CV), step 3 (QP towards predicted fluxes with the test line's BOF), step 4 (r with DS dry mass) vs classical GS on dry mass; both BOF variants.
 - `07_validation_arabidopsis/`: Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).
