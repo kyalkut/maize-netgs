@@ -21,6 +21,13 @@ import bof_pipeline as bp
 TAG = os.environ.get('NETGS_TAG', 'paper_cvxpy_ser'); OBJ3 = os.environ.get('NETGS_OBJ3', 'code')
 R = int(os.environ.get('NETGS_REPS', '50')); NF = 3; OUT = bp.P['out']; MAIN = os.path.join(HERE, 'output')
 CO = 'co' in TAG.split('_')
+# reactions in the step-3 objective (diagnostics; 'acc' = netGS):
+#  acc       step-2 accuracy in this fold >= the biomass flux's (3_Biomass.m; uses the test fold's accuracy)
+#  inner     the same rule, accuracy from an inner 3-fold CV on the training lines only (no test information)
+#  all       every reaction active in B73;  biomass  the biomass flux only (netGS reduces to GS on the biomass flux)
+#  growth    'acc' and |r(flux, biomass flux)| >= 0.95 on the training lines (growth-coupled reactions)
+#  nongrowth 'acc' and |r| < 0.95 (reactions with their own variation), plus the biomass flux
+SEL = os.environ.get('NETGS_SEL', 'acc'); SUF = '' if SEL == 'acc' else f'_sel-{SEL}'
 
 # ---------------------------------------------------------------- data
 def load():
@@ -29,7 +36,8 @@ def load():
     fl = rows[0][2:]; rx = [r[0] for r in rows[1:]]; vref = np.array([float(r[1]) for r in rows[1:]])
     F = np.array([[float(x) for x in r[2:]] for r in rows[1:]])
     feas = {r['line']: r for r in csv.DictReader(open(os.path.join(OUT, 'feasibility_per_line.csv')))}
-    lines = [l for l in fl if l in gl]
+    ok = np.all(np.isfinite(F), 0)                           # lines whose step-1 QP failed (no fluxes) are left out
+    lines = [l for k, l in enumerate(fl) if l in gl and ok[k]]
     gi = [gl.index(l) for l in lines]; fi = [fl.index(l) for l in lines]
     return dict(K=G['K'][np.ix_(gi, gi)], n_snps=int(G['n_snps']), lines=lines, rx=rx, vref=vref, F=F[:, fi].T,   # lines x reactions
                 dm=np.array([float(feas[l]['dry_mass_DS_g']) for l in lines]))
@@ -99,12 +107,11 @@ def init_worker():
     _W.update(cp=cp, prob=cp.Problem(cp.Minimize(obj), cons), x=x, bof=bof, w=w, msk=msk, kb=kb, B=B, bl=bl)
 
 def solve_rep(args):
-    r, ids, P, ACC, lines, inref = args
+    r, ids, P, SM, lines = args
     if 'prob' not in _W: init_worker()
     cp = _W['cp']; kb = _W['kb']; out = np.full(len(lines), np.nan); nsel = []; status = []
     for p in range(1, NF + 1):
-        te = np.where(ids == p)[0]; acc = ACC[p - 1]
-        sel = np.isfinite(acc) & (acc >= acc[kb]) & inref                       # predicted at least as well as biomass
+        te = np.where(ids == p)[0]; sel = SM[p - 1]
         nsel.append(int(sel.sum()))
         for i in te:
             pr = P[i]; ok = sel & (np.abs(pr) > 1e-12)
@@ -124,7 +131,7 @@ if __name__ == '__main__':
     inref = D['vref'] != 0                                   # serine-pathway extras (v_ref = 0) stay out of the objective, as in step 1
     print(f'{n} lines with genotypes and step-1 fluxes ({D["n_snps"]} SNPs), {len(rx)} reactions, {R} x {NF}-fold CV; TAG {TAG}, step 3 {OBJ3}', flush=True)
     # step 2
-    PRED = np.full((R, n, len(rx)), np.nan); ACC = np.full((R, NF, len(rx)), np.nan)
+    PRED = np.full((R, n, len(rx)), np.nan); ACC = np.full((R, NF, len(rx)), np.nan); SMASK = np.zeros((R, NF, len(rx)), bool)
     PDM = np.full((R, n), np.nan); r_gs = np.full((R, NF), np.nan); r_gsbio = np.full((R, NF), np.nan)
     for r in range(R):
         for p in range(1, NF + 1):
@@ -133,6 +140,22 @@ if __name__ == '__main__':
             pred, _ = rrblup(K[np.ix_(tr, tr)], K[np.ix_(te, tr)], Y)
             PRED[r][np.ix_(te, np.arange(len(rx)))] = pred[:, :-1]; PDM[r, te] = pred[:, -1]
             ACC[r, p - 1] = [pearson(F[te, k], pred[:, k]) for k in range(len(rx))]
+            rb = np.array([abs(pearson(F[tr, k], F[tr, kb])) for k in range(len(rx))])
+            acc = ACC[r, p - 1]; base = np.isfinite(acc) & (acc >= acc[kb]) & inref
+            if SEL == 'acc': sm = base
+            elif SEL == 'all': sm = inref.copy()
+            elif SEL == 'biomass': sm = np.zeros(len(rx), bool); sm[kb] = True
+            elif SEL == 'growth': sm = base & (rb >= 0.95)
+            elif SEL == 'nongrowth': sm = base & ~(rb >= 0.95); sm[kb] = True
+            elif SEL == 'inner':
+                ia = np.zeros(len(rx)); inner = np.arange(len(tr)) % NF; np.random.default_rng(r * 10 + p).shuffle(inner)
+                ip = np.full((len(tr), len(rx)), np.nan)
+                for q in range(NF):
+                    a_, b_ = tr[inner != q], tr[inner == q]
+                    ip[inner == q] = rrblup(K[np.ix_(a_, a_)], K[np.ix_(b_, a_)], F[a_])[0]
+                ia = np.array([pearson(F[tr, k], ip[:, k]) for k in range(len(rx))])
+                sm = np.isfinite(ia) & (ia >= ia[kb]) & inref
+            SMASK[r, p - 1] = sm
             r_gs[r, p - 1] = pearson(dm[te], pred[:, -1]); r_gsbio[r, p - 1] = pearson(dm[te], pred[:, kb])
     print(f'step 2 done {time.time()-t0:.0f}s; classical GS on dry mass r = {np.nanmean(r_gs):.3f}; '
           f'biomass flux predicted r = {np.nanmean(ACC[:, :, kb]):.3f}', flush=True)
@@ -147,7 +170,7 @@ if __name__ == '__main__':
     _W['rx'] = rx
     from multiprocessing import Pool
     BIO = np.full((R, n), np.nan); NSEL = np.zeros((R, NF), int); ST = []
-    jobs = [(r, ids[:, r], PRED[r], ACC[r], lines, inref) for r in range(R)]
+    jobs = [(r, ids[:, r], PRED[r], SMASK[r], lines) for r in range(R)]
     with Pool(int(os.environ.get('NETGS_WORKERS', '14')), initializer=set_rx, initargs=(rx,)) as pool:
         for r, out, nsel, status in pool.imap_unordered(solve_rep, jobs):
             BIO[r] = out; NSEL[r] = nsel; ST += status
@@ -158,12 +181,12 @@ if __name__ == '__main__':
         for p in range(1, NF + 1):
             te = np.where(ids[:, r] == p)[0]; ok = np.isfinite(BIO[r, te])
             if ok.sum() > 3: r_net[r, p - 1] = pearson(dm[te][ok], BIO[r, te][ok])
-    with open(os.path.join(OUT, f'netgs_step34_folds_DS_{TAG}_{OBJ3}.csv'), 'w', newline='') as f:
+    with open(os.path.join(OUT, f'netgs_step34_folds_DS_{TAG}_{OBJ3}{SUF}.csv'), 'w', newline='') as f:
         w = csv.writer(f); w.writerow(['replicate', 'fold', 'r_netgs', 'r_classical_gs_drymass', 'r_gs_biomass_flux', 'acc_biomass_flux', 'n_reactions_selected'])
         for r in range(R):
             for p in range(NF):
                 w.writerow([r + 1, p + 1, f'{r_net[r, p]:.4f}', f'{r_gs[r, p]:.4f}', f'{r_gsbio[r, p]:.4f}', f'{ACC[r, p, kb]:.4f}', NSEL[r, p]])
-    S = dict(tag=TAG, step3_objective=OBJ3, n_lines=n, n_snps=D['n_snps'], n_reactions=len(rx), replicates=R, folds=NF,
+    S = dict(tag=TAG, step3_objective=OBJ3, selection=SEL, n_lines=n, n_snps=D['n_snps'], n_reactions=len(rx), replicates=R, folds=NF,
              netgs_accuracy_mean=float(np.nanmean(r_net)), netgs_accuracy_sd=float(np.nanstd(r_net)),
              classical_gs_drymass_mean=float(np.nanmean(r_gs)), classical_gs_drymass_sd=float(np.nanstd(r_gs)),
              gs_on_biomass_flux_mean=float(np.nanmean(r_gsbio)), biomass_flux_prediction_accuracy_mean=float(np.nanmean(ACC[:, :, kb])),
@@ -171,5 +194,5 @@ if __name__ == '__main__':
              n_reactions_selected_median=float(np.median(NSEL)), n_reactions_selected_range=[int(NSEL.min()), int(NSEL.max())],
              step2_accuracy_median_over_reactions=float(np.nanmedian(acc_m)),
              qp_status={s: ST.count(s) for s in set(ST)}, seconds=round(time.time() - t0))
-    json.dump(S, open(os.path.join(OUT, f'netgs_step34_DS_{TAG}_{OBJ3}.json'), 'w'), indent=1)
+    json.dump(S, open(os.path.join(OUT, f'netgs_step34_DS_{TAG}_{OBJ3}{SUF}.json'), 'w'), indent=1)
     print(json.dumps(S, indent=1))

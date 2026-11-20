@@ -93,7 +93,7 @@ STEPS = [
                  [f'output/{v}netgs_step2_accuracy_DS_{t}.csv' for v in ('', 'no24/') for t in ('paper_cvxpy_ser', 'code_cvxpy_ser', 'paper_cvxpy_co')] +
                  [f'output/{v}netgs_step34_{k}DS_{t}_{o}.{e}' for v in ('', 'no24/') for t in ('paper_cvxpy_ser', 'code_cvxpy_ser', 'paper_cvxpy_co')
                   for o in ('paper', 'code') for k, e in (('', 'json'), ('folds_', 'csv'))],
-         note='The VCF (208 MB, input/snp/) is not copied: ftp.cngb.org/pub/CNSA/data3/CNP0001565/zeamap/02_Variants/SNPs/AMP_SNP_anno.vcf.gz.'),
+         note='Diagnostics: output/sensitivity_x0.1|x10/netgs_step34_* (anchor size) and output/netgs_step34_DS_paper_cvxpy_ser_<obj>_sel-<mode>.json (NETGS_SEL: inner, all, biomass, growth, nongrowth). The VCF (208 MB, input/snp/) is not copied: ftp.cngb.org/pub/CNSA/data3/CNP0001565/zeamap/02_Variants/SNPs/AMP_SNP_anno.vcf.gz.'),
     dict(name='07_validation_arabidopsis',
          what='Python port vs published netGS on the Arabidopsis example (s_model identical, 0.0035036); paper (Eq. 2) vs code objective: same flux patterns, r = 1.00 (cvxpy).',
          scripts='validation/validate_arabidopsis.py, validation/compare_objectives.py (NETGS_REPO = netGS repo netGS/ folder)',

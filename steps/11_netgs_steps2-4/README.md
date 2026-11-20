@@ -42,4 +42,4 @@ Genotypes (ZEAMAP AMP SNPs, B73 v4) -> kernel K = ZZ'; netGS step 2 (rrBLUP per 
 - `outputs/netgs_step34_DS_paper_cvxpy_co_code.json` (from `output/no24/netgs_step34_DS_paper_cvxpy_co_code.json`)
 - `outputs/netgs_step34_folds_DS_paper_cvxpy_co_code.csv` (from `output/no24/netgs_step34_folds_DS_paper_cvxpy_co_code.csv`)
 
-The VCF (208 MB, input/snp/) is not copied: ftp.cngb.org/pub/CNSA/data3/CNP0001565/zeamap/02_Variants/SNPs/AMP_SNP_anno.vcf.gz.
+Diagnostics: output/sensitivity_x0.1|x10/netgs_step34_* (anchor size) and output/netgs_step34_DS_paper_cvxpy_ser_<obj>_sel-<mode>.json (NETGS_SEL: inner, all, biomass, growth, nongrowth). The VCF (208 MB, input/snp/) is not copied: ftp.cngb.org/pub/CNSA/data3/CNP0001565/zeamap/02_Variants/SNPs/AMP_SNP_anno.vcf.gz.
