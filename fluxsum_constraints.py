@@ -25,6 +25,10 @@ bof = np.zeros(m['S'].shape[0])
 for r in rows[1:]:
     b = float(comp[r[0]]['bound_mmol_per_gDW'] or 0)
     if b: bof[bp.species_for(m, r[0], (r[1], 'c', 'p', 'm', 'x', 'v'))] -= b
+# 1 g DW as in bof_pipeline.py (BioModTool; Schulz et al. 2021): Table III part x 1000 / its mass (529.3 mg -> f 1.889);
+# ATP maintenance not scaled. FS_MASS=avg keeps the unscaled Table III coefficients (runs before 20 Nov).
+if os.environ.get('FS_MASS', bp.PARAM['mass_mode']) == '1g':
+    bof *= 1000.0 / sum(float(c['bound_mmol_per_gDW'] or 0) * float(c['mw']) for c in comp.values())
 for nm, s in (('ATP', -1), ('ADP', 1), ('Orthophosphate', 1)): bof[bp.species_for(m, nm, ('c',))] += s * bp.PARAM['atp_maintenance']
 bof = bof[net['keep']]
 S = np.hstack([net['S'], bof[:, None]]); lb = np.append(net['lb'], 0); ub = np.append(net['ub'], 1000); jb = S.shape[1] - 1
@@ -96,8 +100,9 @@ summary = dict(lambda_=LAM, n_lines=len(keep), n_active=int(len(nz)), metabolite
                status=status, median_rho=dict(none=med(tab['none']), all=med(tab['all']), held_out=med(tab['held_out'])),
                rho_per_metabolite=tab, beyond_growth=dict(none=beyond(V['none']), all=beyond(V['all'])),
                mean_abs_rel_dev_from_target_all=float(np.nanmedian(np.abs((G @ V['all']) / (phi_ref[:, None] * (target[None, :] / vr[kb]) * 2.0 ** (X - xb[:, None])) - 1))))
-json.dump(summary, open(os.path.join(OUT, 'fluxsum_constraints_summary_DS.json'), 'w'), indent=1)
-with open(os.path.join(OUT, 'fluxsum_constraints_fluxes_DS.csv'), 'w', newline='') as f:
+SUF = os.environ.get('FS_REF', 'pfba')
+json.dump(summary, open(os.path.join(OUT, f'fluxsum_constraints_summary_DS_{SUF}.json'), 'w'), indent=1)
+with open(os.path.join(OUT, f'fluxsum_constraints_fluxes_DS_{SUF}.csv'), 'w', newline='') as f:
     w = csv.writer(f); w.writerow(['reaction', 'v_ref_B73'] + L)
     rx = net['rxns'] + ['BIOMASS']
     for a, j in enumerate(nz): w.writerow([rx[j], f'{vref[j]:.6g}'] + [f'{x:.6g}' for x in V['all'][a]])

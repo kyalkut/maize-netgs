@@ -1,0 +1,51 @@
+metabolite,feature,in_bof,n_reactions,phi_median,phi_cv,rho_level_phi,rho_level_phi_per_growth,rho_level_phi_with_bof,rho_level_growth,n_lines
+Adenine,PP_Group_00119,yes,1,0.000,1.098,0.975,1.000,0.975,-0.068,371
+cis-Aconitate,PP_Group_00947,yes,1,0.000,0.789,0.952,1.000,0.952,-0.141,369
+Thymidine,PP_Group_00885,yes,1,0.000,0.714,0.949,1.000,0.949,0.011,371
+Guanine,PP_Group_06960,yes,1,0.000,1.020,0.948,1.000,0.948,0.022,371
+N-Acetyl-L-glutamate,PP_Group_02739,yes,1,0.000,1.533,0.942,1.000,0.942,0.071,371
+Hypoxanthine,PP_Group_20731,yes,1,0.000,0.611,0.941,1.000,0.941,0.129,371
+Indole,PP_Group_21040,yes,1,0.001,0.704,0.940,1.000,0.940,-0.202,371
+Inosine,PP_Group_00303,yes,1,0.000,0.615,0.939,1.000,0.939,0.090,371
+Xanthosine,PN_Group_25991,yes,1,0.000,0.687,0.938,1.000,0.938,0.060,371
+Uridine,PP_Group_02798,yes,1,0.000,0.537,0.923,1.000,0.923,-0.042,370
+D-Mannose 1-phosphate,PN_Group_26291,yes,1,0.000,0.490,0.902,1.000,0.902,-0.095,371
+Cytidine,PP_Group_18801,yes,1,0.000,0.499,0.887,1.000,0.887,-0.006,371
+Guanosine,PP_Group_18259,yes,1,0.000,0.395,0.839,1.000,0.839,0.060,371
+D-Glycerate,PN_Group_01883,yes,2,0.000,0.329,0.721,1.000,0.721,-0.089,371
+Coniferyl aldehyde,PP_Group_19908,yes,2,0.014,0.217,0.145,0.631,0.161,0.127,371
+Ferulate,PP_Group_19960,yes,2,0.016,0.218,0.092,0.905,0.169,0.015,371
+4-Coumarate,PP_Group_00813,yes,3,0.042,0.218,0.083,0.347,0.094,0.064,371
+(2S)-2-Isopropylmalate,PN_Group_27211,yes,2,0.040,0.216,0.072,0.082,0.077,0.071,371
+4-Coumarate,PP_Group_00783,no,3,0.042,0.218,0.067,0.605,0.066,0.016,371
+4-Coumarate,PP_Group_20535,no,3,0.042,0.218,0.053,0.691,0.054,-0.001,371
+Citrate,PN_Group_27033,yes,7,0.733,0.216,0.049,0.132,0.049,0.046,371
+Adenosine,PP_Group_18511,yes,2,0.046,0.218,0.048,-0.158,0.052,0.058,371
+1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide,PP_Group_17362,yes,2,0.007,0.316,0.044,-0.029,0.072,0.105,371
+S-Adenosyl-L-homocysteine,PP_Group_04457,yes,4,0.046,0.217,0.014,-0.061,0.020,0.021,370
+GMP,PP_Group_16961,no,4,0.003,0.436,-0.010,-0.122,-0.010,0.083,318
+AMP,PP_Group_01385,no,9,0.226,0.215,-0.014,-0.166,-0.014,-0.008,367
+L-Methionine,PP_Group_00922,yes,2,0.047,0.217,-0.027,-0.098,-0.026,-0.021,364
+UMP,PP_Group_03356,no,3,0.004,0.235,-0.062,-0.153,-0.062,-0.022,313
+L-Tryptophan,PP_Group_00384,yes,1,0.006,0.212,-0.067,0.984,-0.067,-0.193,371
+Isocitrate,PN_Group_27032,yes,3,0.217,0.216,-0.091,0.208,-0.080,-0.096,369
+ADP,PP_Group_07681,yes,35,27.637,0.211,-0.097,0.045,-0.097,-0.096,354
+L-Leucine,PP_Group_04087,yes,1,0.020,0.216,-0.122,0.200,-0.122,-0.124,371
+L-Glutamate,PP_Group_20515,yes,17,1.475,0.177,-0.138,0.149,-0.136,-0.139,371
+L-Tyrosine,PP_Group_00716,yes,2,0.047,0.218,-0.149,-0.170,-0.148,-0.141,371
+L-Phenylalanine,PP_Group_00892,yes,1,0.012,0.216,-0.156,0.590,-0.156,-0.167,371
+L-Threonine,PP_Group_21020,yes,2,0.030,0.216,-0.173,0.064,-0.167,-0.175,371
+Xanthurenic acid,PP_Group_19453,no,0,0.000,nan,nan,nan,nan,0.064,362
+Nicotinate D-ribonucleoside,PP_Group_18652,no,0,0.000,nan,nan,nan,nan,0.018,371
+N-Ribosylnicotinamide,PP_Group_00936,no,0,0.000,nan,nan,nan,nan,-0.055,371
+5'-Methylthioadenosine,PP_Group_01938,no,0,0.000,nan,nan,nan,nan,0.077,371
+Quercetin 3-O-glucoside,PP_Group_00589,no,0,0.000,nan,nan,nan,nan,-0.065,371
+Raffinose,PP_Group_00049,no,0,0.000,nan,nan,nan,nan,0.013,371
+Betaine,PP_Group_21037,no,0,0.000,nan,nan,nan,nan,0.076,370
+5-Oxoproline,PP_Group_20873,no,0,0.000,nan,nan,nan,nan,-0.148,371
+Benzoate,PP_Group_00732,no,0,0.000,nan,nan,nan,nan,-0.152,371
+Pyridoxamine,PP_Group_00712,no,0,0.000,nan,nan,nan,nan,-0.005,371
+Pantothenate,PP_Group_03065,no,0,0.000,nan,nan,nan,nan,0.040,371
+D-Glucarate,PN_Group_02189,no,0,0.000,nan,nan,nan,nan,-0.099,367
+Choline,PP_Group_21123,no,0,0.000,nan,nan,nan,nan,-0.080,371
+Riboflavin,PN_Group_24064,no,0,0.000,nan,nan,nan,nan,-0.022,357

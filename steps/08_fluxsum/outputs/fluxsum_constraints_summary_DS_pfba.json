@@ -1,0 +1,141 @@
+{
+ "lambda_": 10.0,
+ "n_lines": 40,
+ "n_active": 266,
+ "metabolites": [
+  "Coniferyl aldehyde",
+  "Adenosine",
+  "AMP",
+  "ADP",
+  "S-Adenosyl-L-homocysteine",
+  "L-Threonine",
+  "L-Methionine",
+  "L-Glutamate",
+  "L-Leucine",
+  "L-Phenylalanine",
+  "L-Tyrosine",
+  "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide",
+  "4-Coumarate",
+  "L-Tryptophan",
+  "Citrate",
+  "(2S)-2-Isopropylmalate",
+  "Isocitrate",
+  "Ferulate"
+ ],
+ "folds": [
+  [
+   "Coniferyl aldehyde",
+   "Adenosine",
+   "AMP",
+   "ADP",
+   "L-Methionine",
+   "L-Glutamate",
+   "Citrate",
+   "Isocitrate",
+   "Ferulate"
+  ],
+  [
+   "S-Adenosyl-L-homocysteine",
+   "L-Threonine",
+   "L-Leucine",
+   "L-Phenylalanine",
+   "L-Tyrosine",
+   "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide",
+   "4-Coumarate",
+   "L-Tryptophan",
+   "(2S)-2-Isopropylmalate"
+  ]
+ ],
+ "status": {
+  "none": {
+   "optimal": 40
+  },
+  "all": {
+   "optimal": 40
+  },
+  "foldA": {
+   "optimal": 40
+  },
+  "foldB": {
+   "optimal": 40
+  }
+ },
+ "median_rho": {
+  "none": -0.12439024390243905,
+  "all": -0.0975609756097561,
+  "held_out": -0.12213883677298312
+ },
+ "rho_per_metabolite": {
+  "none": {
+   "Coniferyl aldehyde": 0.06960600375234523,
+   "Adenosine": -0.039212007504690435,
+   "AMP": -0.2862348178137652,
+   "ADP": -0.30583214793741104,
+   "S-Adenosyl-L-homocysteine": 0.24258911819887435,
+   "L-Threonine": -0.22045028142589124,
+   "L-Methionine": 0.17408906882591096,
+   "L-Glutamate": -0.17485928705440903,
+   "L-Leucine": -0.06491557223264542,
+   "L-Phenylalanine": -0.21144465290806758,
+   "L-Tyrosine": -0.02457786116322702,
+   "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide": 0.21726078799249532,
+   "4-Coumarate": -0.16866791744840529,
+   "L-Tryptophan": -0.16622889305816138,
+   "Citrate": -0.0981238273921201,
+   "(2S)-2-Isopropylmalate": 0.09362101313320827,
+   "Isocitrate": -0.20748987854251014,
+   "Ferulate": -0.150656660412758
+  },
+  "all": {
+   "Coniferyl aldehyde": 0.1050656660412758,
+   "Adenosine": -0.007317073170731709,
+   "AMP": -0.3062753036437247,
+   "ADP": -0.3089141773352299,
+   "S-Adenosyl-L-homocysteine": 0.26679174484052537,
+   "L-Threonine": -0.16716697936210134,
+   "L-Methionine": 0.21578947368421053,
+   "L-Glutamate": -0.16135084427767357,
+   "L-Leucine": -0.035084427767354605,
+   "L-Phenylalanine": -0.15478424015009384,
+   "L-Tyrosine": 0.026641651031894937,
+   "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide": 0.23414634146341468,
+   "4-Coumarate": -0.1953095684803002,
+   "L-Tryptophan": -0.09737335834896811,
+   "Citrate": -0.09774859287054409,
+   "(2S)-2-Isopropylmalate": 0.10393996247654785,
+   "Isocitrate": -0.20829959514170043,
+   "Ferulate": -0.16754221388367735
+  },
+  "held_out": {
+   "S-Adenosyl-L-homocysteine": 0.26378986866791754,
+   "L-Threonine": -0.12626641651031897,
+   "L-Leucine": -0.10056285178236399,
+   "L-Phenylalanine": -0.20600375234521578,
+   "L-Tyrosine": -0.014634146341463417,
+   "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide": 0.13714821763602253,
+   "4-Coumarate": -0.20469043151969987,
+   "L-Tryptophan": -0.14690431519699815,
+   "(2S)-2-Isopropylmalate": 0.10243902439024392,
+   "Coniferyl aldehyde": 0.11857410881801128,
+   "Adenosine": 0.008442776735459663,
+   "AMP": -0.33421052631578946,
+   "ADP": -0.3198198198198198,
+   "L-Methionine": 0.24412955465587047,
+   "L-Glutamate": -0.1553470919324578,
+   "Citrate": -0.11801125703564729,
+   "Isocitrate": -0.23441295546558708,
+   "Ferulate": -0.21088180112570362
+  }
+ },
+ "beyond_growth": {
+  "none": [
+   2.186118126374257e-11,
+   1
+  ],
+  "all": [
+   8.848515805612716e-11,
+   1
+  ]
+ },
+ "mean_abs_rel_dev_from_target_all": 0.5420463200737187
+}

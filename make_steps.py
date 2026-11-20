@@ -36,6 +36,7 @@ STEPS = [
          scripts='run_netgs_maize.py (netgs_step1.py; solver cvxpy/Clarabel, qp_admm.py = old ADMM), merge_netgs.py (figure)',
          inputs=['output/biomreaction_DS.csv', 'output/feasibility_per_line.csv', 'input/Maize_C4GEM_vs1.0.xml'],
          outputs=['output/netgs_fluxes_DS_paper.csv', 'output/netgs_summary_DS_paper.json', 'output/fig_netgs_fluxes.png',
+                  'output/fig_netgs_fluxes_code_cvxpy_ser.png', 'output/fig_netgs_fluxes_paper_cvxpy_co.png', 'output/fig_netgs_fluxes_code_cvxpy_co.png',
                   'output/netgs_fluxes_DS_code_cvxpy.csv', 'output/netgs_summary_DS_code_cvxpy.json',
                   'output/netgs_fluxes_DS_code_cvxpy_ser.csv', 'output/netgs_summary_DS_code_cvxpy_ser.json',
                   'output/netgs_fluxes_DS_paper_cvxpy_ser.csv', 'output/netgs_summary_DS_paper_cvxpy_ser.json',
@@ -45,7 +46,9 @@ STEPS = [
               'The ADMM run (netgs_fluxes_DS_paper.csv) has 67 lines that are infeasible on the B73-active network (see the README). '
               'Files ending _ser add the phosphorylated serine pathway (R01513, R04173, R00582) to that network; all 371 lines are then feasible. '
               'code_cvxpy = objective and solver type of the original 1_FluxDist.m; paper_cvxpy = Eq. 2 of the paper (both interior point, Clarabel). '
-              'Files ending _co add the maize RuBisCO bounds 22.2 <= vc/vo <= 88.0 (NETGS_CO, Wang et al. 2012) without the serine pathway; all 371 lines feasible, same fluxes as _ser.'),
+              'Files ending _co add the maize RuBisCO bounds 22.2 <= vc/vo <= 88.0 (NETGS_CO, Wang et al. 2012) without the serine pathway; all 371 lines feasible, '
+              'fluxes as _ser (per-reaction r median 1.00; 3 of 281 shared reactions below 0.9). '
+              'netgs_fluxes_DS_paper.csv (ADMM) and netgs_fluxes_DS_code_cvxpy.csv (no serine pathway) are older runs with the 536.3 mg BOF, kept for comparison.'),
     dict(name='06_data_analyses',
          what='G x E consistency per BOF metabolite (WW vs DS line correlation); ridge CV prediction of DS dry mass.',
          scripts='analysis_data.py, figures.py',
@@ -59,9 +62,23 @@ STEPS = [
          inputs=['output/netgs_fluxes_DS_paper_cvxpy_ser.csv', 'output/biomreaction_DS.csv', 'output/bof_components.csv',
                  'curation/metabolite_mapping.csv', 'input/Maize_C4GEM_vs1.0.xml'],
          outputs=['output/fluxsum_DS_paper_cvxpy_ser.csv', 'output/fluxsum_vs_level_DS_paper_cvxpy_ser.csv',
-                  'output/fluxsum_summary_DS_paper_cvxpy_ser.json', 'output/fig_fluxsum.png'],
+                  'output/fluxsum_summary_DS_paper_cvxpy_ser.json', 'output/fig_fluxsum.png',
+                  'output/fluxsum_DS_paper_cvxpy_co.csv', 'output/fluxsum_vs_level_DS_paper_cvxpy_co.csv',
+                  'output/fluxsum_summary_DS_paper_cvxpy_co.json', 'output/fig_fluxsum_paper_cvxpy_co.png',
+                  'output/fluxsum_constraints_summary_DS_pfba.json', 'output/fluxsum_constraints_fluxes_DS_pfba.csv',
+                  'output/fluxsum_constraints_summary_DS_fba.json', 'output/fluxsum_constraints_fluxes_DS_fba.csv'],
          note='Zhang log2 values: see 02_metabolite_selection/inputs. Main variant excludes the biomass reaction (circular); '
-              'rho_level_phi_with_bof includes it.'),
+              'rho_level_phi_with_bof includes it. fluxsum_constraints_*: test (fluxsum_constraints.py, NETGS_N=40 lines, FS_REF=pfba/fba) '
+              'with the Table III BOF scaled to 1 g and flux-sum penalties instead of data-driven BOF components.'),
+    dict(name='10_variant_without_24',
+         what='Variant: the 24 metabolites without a literature anchor left out (BOF = Table III + 7 amino acids, 37 components, 1 g DW); '
+              'BOFs, netGS step 1 (paper/code x serine pathway/RuBisCO bounds), FluxSum, data analyses; compared with the main run (61 components).',
+         scripts='bof_pipeline.py with BOF_NO_PH=1 BOF_OUT=output/no24; run_netgs_maize.py + merge_netgs.py + fluxsum.py + analysis_data.py with BOF_OUT=output/no24; compare_variants.py',
+         inputs=['output/no24/bof_components.csv', 'output/no24/biomreaction_DS.csv'],
+         outputs=['output/no24', 'output/variant_comparison.json', 'output/variant_comparison_bof_DS.csv',
+                  'output/variant_comparison_reactions_paper_cvxpy_ser.csv', 'output/variant_comparison_reactions_code_cvxpy_ser.csv',
+                  'output/variant_comparison_reactions_paper_cvxpy_co.csv', 'output/variant_comparison_reactions_code_cvxpy_co.csv'],
+         note='output/no24 holds the full set of files of the variant (same names as in output/).'),
     dict(name='09_model_comparison',
          what='C4GEM vs Simons et al. 2014 vs Bogart & Myers 2016 (iEB5204, iEB2140x2): size, cells, genes, biomass, overlap with Zhang metabolites.',
          scripts='compare_models.py',

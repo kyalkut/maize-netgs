@@ -1,0 +1,38 @@
+component,varies,median_with24,median_no24,ratio_no24_over_with24,spearman_lines
+Maltose,no,0.00185536,0.00188186,1.014,nan
+Sucrose,no,0.178115,0.180659,1.014,nan
+D-Glucose,no,0.0983343,0.0997388,1.014,nan
+beta-D-Fructose,no,0.0983343,0.0997388,1.014,nan
+Starch,no,0.491672,0.498694,1.014,nan
+Cellulose,no,0.565886,0.573968,1.014,nan
+D-Xylose,no,0.523213,0.530686,1.014,nan
+4-Coumaryl alcohol,no,0.0742146,0.0752745,1.014,nan
+Coniferyl alcohol,no,0.0890575,0.0903295,1.014,nan
+Sinapyl alcohol,no,0.1039,0.105384,1.014,nan
+Hexadecanoic acid,no,0.0482395,0.0489285,1.014,nan
+L-Alanine,no,0.198524,0.201359,1.01401,nan
+L-Asparagine,no,0.723592,0.733927,1.014,nan
+L-Aspartate,no,0.300569,0.304862,1.01401,nan
+L-Cysteine,no,0.0445287,0.0451647,1.014,nan
+L-Glutamate,yes,0.739279,0.74988,1.014,0.877486
+L-Glutamine,no,0.649378,0.658652,1.014,nan
+Glycine,no,0.259751,0.263461,1.014,nan
+L-Isoleucine,no,0.111322,0.112912,1.014,nan
+L-Leucine,yes,0.261041,0.26444,1.01401,0.365369
+L-Methionine,yes,0.0038607,0.00391202,1.014,0.994261
+L-Phenylalanine,yes,0.149632,0.151587,1.01401,0.650971
+L-Proline,no,0.0185536,0.0188186,1.014,nan
+L-Serine,no,0.389627,0.395191,1.014,nan
+L-Threonine,yes,0.161895,0.164173,1.014,0.79877
+L-Tryptophan,yes,0.0778488,0.0789176,1.014,0.985978
+L-Tyrosine,yes,0.0567137,0.0575211,1.014,0.730596
+L-Valine,no,0.185536,0.188186,1.014,nan
+L-Lysine,no,0.00185536,0.00188186,1.014,nan
+dATP,no,0.00500948,0.00508103,1.014,nan
+dGTP,no,0.00315412,0.00319917,1.014,nan
+dCTP,no,0.00352519,0.00357554,1.01401,nan
+dTTP,no,0.00519502,0.00526922,1.014,nan
+ATP,no,0.00538056,0.0054574,1.014,nan
+GTP,no,0.00723592,0.00733927,1.014,nan
+CTP,no,0.0061227,0.00621015,1.014,nan
+UTP,no,0.00538056,0.0054574,1.014,nan

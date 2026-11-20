@@ -82,6 +82,10 @@ bof_pipeline/
 
 **`sensitivity_x0.1/`, `sensitivity_x10/`**: the same pipeline with all placeholder anchors ×0.1 and ×10, to show how much the placeholders matter.
 
+**`no24/`**: the whole pipeline (BOFs, netGS step 1 for all four setups, FluxSum, analyses) with the 24 placeholder metabolites left out (`BOF_NO_PH=1 BOF_OUT=output/no24`); BOF = Table III + 7 amino acids, 37 components. Same file names as in `output/`.
+
+**`variant_comparison.json`, `variant_comparison_bof_DS.csv`, `variant_comparison_reactions_<tag>.csv`** (`compare_variants.py`): main run vs `no24/`. BOF part: line max biomass, spread, ranking (Spearman), shared coefficients. netGS part, per reaction: `r_lines` (correlation of the reaction's flux across lines between variants), `level_ratio_no24_over_with24`, `cv_beyond_growth_*` (CV of flux / biomass flux across lines).
+
 ### Analyses
 **`analysis_GxE_bof_metabolites.csv`**: per BOF metabolite: `r_WW_DS` (does the line ranking stay the same under drought?), variance shares `pct_line` / `pct_condition` / `pct_residual_GxE`, and `drought_shift_log2`.
 

@@ -16,5 +16,13 @@ Flux-sum phi = 1/2 sum|S_ij v_j| of each measured metabolite per DS line (from s
 - `outputs/fluxsum_vs_level_DS_paper_cvxpy_ser.csv` (from `output/fluxsum_vs_level_DS_paper_cvxpy_ser.csv`)
 - `outputs/fluxsum_summary_DS_paper_cvxpy_ser.json` (from `output/fluxsum_summary_DS_paper_cvxpy_ser.json`)
 - `outputs/fig_fluxsum.png` (from `output/fig_fluxsum.png`)
+- `outputs/fluxsum_DS_paper_cvxpy_co.csv` (from `output/fluxsum_DS_paper_cvxpy_co.csv`)
+- `outputs/fluxsum_vs_level_DS_paper_cvxpy_co.csv` (from `output/fluxsum_vs_level_DS_paper_cvxpy_co.csv`)
+- `outputs/fluxsum_summary_DS_paper_cvxpy_co.json` (from `output/fluxsum_summary_DS_paper_cvxpy_co.json`)
+- `outputs/fig_fluxsum_paper_cvxpy_co.png` (from `output/fig_fluxsum_paper_cvxpy_co.png`)
+- `outputs/fluxsum_constraints_summary_DS_pfba.json` (from `output/fluxsum_constraints_summary_DS_pfba.json`)
+- `outputs/fluxsum_constraints_fluxes_DS_pfba.csv` (from `output/fluxsum_constraints_fluxes_DS_pfba.csv`)
+- `outputs/fluxsum_constraints_summary_DS_fba.json` (from `output/fluxsum_constraints_summary_DS_fba.json`)
+- `outputs/fluxsum_constraints_fluxes_DS_fba.csv` (from `output/fluxsum_constraints_fluxes_DS_fba.csv`)
 
-Zhang log2 values: see 02_metabolite_selection/inputs. Main variant excludes the biomass reaction (circular); rho_level_phi_with_bof includes it.
+Zhang log2 values: see 02_metabolite_selection/inputs. Main variant excludes the biomass reaction (circular); rho_level_phi_with_bof includes it. fluxsum_constraints_*: test (fluxsum_constraints.py, NETGS_N=40 lines, FS_REF=pfba/fba) with the Table III BOF scaled to 1 g and flux-sum penalties instead of data-driven BOF components.

@@ -43,5 +43,6 @@ ax = axs[1]; v = np.sort(cv_norm[np.isfinite(cv_norm)])[::-1]
 ax.plot(np.arange(1, len(v) + 1), v, color=ORANGE, lw=2)
 ax.set_xlabel('reactions, ranked'); ax.set_ylabel('CV across lines (fluxes per unit growth)')
 ax.set_title('Flux variation beyond growth differences', fontsize=10, loc='left', color=INK); ax.grid(color=GRID, lw=0.6); ax.set_axisbelow(True)
-fig.tight_layout(); fig.savefig(os.path.join(OUT, 'fig_netgs_fluxes.png'), dpi=160)
-print(f'written netgs_fluxes_DS_{TAG}.csv, netgs_summary_DS_{TAG}.json, fig_netgs_fluxes.png')
+fig.tight_layout(); FIG = 'fig_netgs_fluxes.png' if TAG == 'paper_cvxpy_ser' else f'fig_netgs_fluxes_{TAG}.png'   # main run keeps the plain name
+fig.savefig(os.path.join(OUT, FIG), dpi=160)
+print(f'written netgs_fluxes_DS_{TAG}.csv, netgs_summary_DS_{TAG}.json, {FIG}')

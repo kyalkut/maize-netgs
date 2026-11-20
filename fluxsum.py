@@ -71,11 +71,11 @@ plt.rcParams.update({'font.size': 9, 'axes.spines.top': False, 'axes.spines.righ
                      'axes.edgecolor': INK2, 'xtick.color': INK2, 'ytick.color': INK2})
 fig, axs = plt.subplots(1, 2, figsize=(10, 3.6))
 for ax, key, title in ((axs[0], 'rho_level_phi', 'Flux-sum vs measured level'), (axs[1], 'rho_level_phi_per_growth', 'Flux-sum per unit growth vs measured level')):
-    for sel, col, lab in (('yes', BLUE, 'in BOF (31)'), ('no', ORANGE, 'measured, not in BOF')):
+    for sel, col, lab in (('yes', BLUE, f'in BOF ({sum(r["in_bof"] == "yes" for r in res)})'), ('no', ORANGE, 'measured, not in BOF')):
         pts = [(r['n_reactions'], r[key]) for r in res if r['in_bof'] == sel and np.isfinite(r[key])]
         if pts: ax.scatter(*zip(*pts), s=18, color=col, alpha=0.8, label=lab)
     ax.set_xscale('symlog', linthresh=1); ax.axhline(0, color=INK2, lw=0.8)
     ax.set_xlabel('reactions carrying the metabolite (active network)'); ax.set_ylabel('Spearman r across 371 DS lines')
     ax.set_title(title, fontsize=10, loc='left', color=INK); ax.grid(color=GRID, lw=0.6); ax.set_axisbelow(True); ax.set_ylim(-1.05, 1.05)
 axs[0].legend(frameon=False, fontsize=8, loc='lower right')
-fig.tight_layout(); fig.savefig(os.path.join(OUT, 'fig_fluxsum.png'), dpi=160)
+fig.tight_layout(); fig.savefig(os.path.join(OUT, 'fig_fluxsum.png' if TAG == 'paper_cvxpy_ser' else f'fig_fluxsum_{TAG}.png'), dpi=160)

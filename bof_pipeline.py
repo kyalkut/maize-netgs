@@ -36,6 +36,7 @@ P = dict(
     out=os.path.join(HERE, 'output'),
     cache=os.path.join(HERE, 'output', 'cache_zhang.pkl'),
 )
+if os.environ.get('BOF_OUT'): P['out'] = os.environ['BOF_OUT']   # variant / test folders (all scripts importing this module)
 # ---- parameters (the decisions to discuss) ---------------------------------------------
 PARAM = dict(
     min_coverage=0.90,        # feature must be measured in >=90% of lines in BOTH conditions
@@ -44,6 +45,8 @@ PARAM = dict(
     default_free_frac_aa=0.05,   # PLACEHOLDER: free pool = 5% of Table III coefficient (amino acids)
     default_free_other=0.001,    # PLACEHOLDER: 1 umol/gDW for metabolites without literature value
     placeholder_scale=1.0,       # sensitivity: multiply all placeholder anchors
+    drop_placeholders=False,     # True (env BOF_NO_PH=1): leave out every non-Table III metabolite without a literature anchor
+                                 # (the 24); BOF = Table III + the 7 amino acids with Shu et al. 2022 anchors
     mass_mode='1g',           # '1g': whole BOF to 1 g DW (BioModTool; Schulz 2021), default since 18 Nov; 'avg': old run, fixed part rescaled to the average recipe (536.3 mg, no source)
     reference_line='B73',
     light_uptake=100.0,       # arbitrary cap for LP tests (results are relative)
@@ -161,6 +164,7 @@ def main():
     if os.environ.get('BOF_OUT'): P['out'] = os.environ['BOF_OUT']
     if os.environ.get('BOF_PH_SCALE'): PARAM['placeholder_scale'] = float(os.environ['BOF_PH_SCALE'])
     if os.environ.get('BOF_MASS_MODE'): PARAM['mass_mode'] = os.environ['BOF_MASS_MODE']
+    if os.environ.get('BOF_NO_PH') == '1': PARAM['drop_placeholders'] = True
     os.makedirs(P['out'], exist_ok=True)
     log = []
     def say(*a):
@@ -250,6 +254,12 @@ def main():
             free[mm] = PARAM['placeholder_scale'] * PARAM['default_free_other']; src[mm] = 'PLACEHOLDER (1 umol/gDW)'
     n_ph = sum(s.startswith('PLACEHOLDER') for s in src.values())
     say(f'  {len(free)} anchors; {n_ph} are placeholders -> replace with literature values in curation/anchors.csv')
+    if PARAM['drop_placeholders']:
+        gone = sorted(mm for mm in chosen if src[mm].startswith('PLACEHOLDER') and mm not in tab3)
+        for mm in gone:
+            dropped.append((chosen[mm]['fid'], mm, 'no literature anchor (variant without placeholders)'))
+            del chosen[mm], free[mm], src[mm], rel[mm]
+        say(f'  variant without placeholders: {len(gone)} metabolites left out; {len(chosen)} data-driven components remain: {sorted(chosen)}')
     # write/refresh anchors template
     if not os.environ.get('BOF_OUT'):
       with open(P['anchors'], 'w', newline='', encoding='utf-8') as f:
