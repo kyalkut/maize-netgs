@@ -12,7 +12,8 @@ Pipeline (each step is a function below; run all with `python bof_pipeline.py`):
   5  relative  Relative factors r_ij = 2^(x_ij - mean_WW(x_j))   (common WW anchor for both conditions)
   6  anchor    Absolute free-pool anchors per metabolite (curation/anchors.csv; placeholders flagged)
   7  twopool   b_ij = b_bound_j + b_free_j * r_ij
-  8  mass      Rescale fixed components so every line has the same total BOF mass as the reference BOF
+  8  mass      Normalise every line's BOF to 1 g DW: all coefficients x 1000/mass (BioModTool; Schulz et al. 2021);
+               ATP maintenance not normalised (BioModTool). BOF_MASS_MODE=avg gives the old run (536.3 mg, fixed part only)
   9  export    biomreaction_WW.csv / biomreaction_DS.csv (netGS format: metabolites x lines) + long table
   10 qc        Feasibility (max biomass per line with its BOF) and summary report
 
@@ -29,6 +30,7 @@ P = dict(
     mapping=os.path.join(HERE, 'curation', 'metabolite_mapping.csv'),
     bof=os.path.join(HERE, 'curation', 'bof_tableIII.csv'),
     anchors=os.path.join(HERE, 'curation', 'anchors.csv'),
+    mw=os.path.join(HERE, 'curation', 'molecular_weights.csv'),   # average MW from neutral formula (C4GEM SBML has no formulas)
     gapfill=os.path.join(HERE, 'curation', 'gapfill_reactions.json'),
     broken=os.path.join(HERE, 'curation', 'broken_reactions.csv'),
     out=os.path.join(HERE, 'output'),
@@ -42,6 +44,7 @@ PARAM = dict(
     default_free_frac_aa=0.05,   # PLACEHOLDER: free pool = 5% of Table III coefficient (amino acids)
     default_free_other=0.001,    # PLACEHOLDER: 1 umol/gDW for metabolites without literature value
     placeholder_scale=1.0,       # sensitivity: multiply all placeholder anchors
+    mass_mode='1g',           # '1g': whole BOF to 1 g DW (BioModTool; Schulz 2021), default since 18 Nov; 'avg': old run, fixed part rescaled to the average recipe (536.3 mg, no source)
     reference_line='B73',
     light_uptake=100.0,       # arbitrary cap for LP tests (results are relative)
     atp_maintenance=30.0,     # Table III: 30 ATP -> ADP + Pi per unit biomass
@@ -157,6 +160,7 @@ def main():
     # optional overrides for sensitivity runs
     if os.environ.get('BOF_OUT'): P['out'] = os.environ['BOF_OUT']
     if os.environ.get('BOF_PH_SCALE'): PARAM['placeholder_scale'] = float(os.environ['BOF_PH_SCALE'])
+    if os.environ.get('BOF_MASS_MODE'): PARAM['mass_mode'] = os.environ['BOF_MASS_MODE']
     os.makedirs(P['out'], exist_ok=True)
     log = []
     def say(*a):
@@ -258,8 +262,15 @@ def main():
     say('STEP 7  two-pool coefficients  b = b_bound + b_free * r')
     comps = [b['model_metabolite'] for b in bof] + sorted(m for m in chosen if m not in tab3)
     mw = {b['model_metabolite']: float(b['mw_g_per_mol']) for b in bof}
+    # molecular weights of the non-Table III metabolites: average MW of the neutral formula, same convention as
+    # Table III (Schulz 2021 uses 'the compounds' molecular weight in the model'; the C4GEM SBML carries no formulas).
+    # Zhang's exact (monoisotopic) masses are not used: they are MS feature masses (ferulic acid 176.05, guanine 134.02
+    # are in-source fragments, not the compounds).
+    mw_cur = {r['model_metabolite']: float(r['mw_g_per_mol']) for r in read_csv(P['mw'])}
     for mm in chosen:
-        if mm not in mw: mw[mm] = chosen[mm]['mass'] or 150.0
+        if mm not in mw:
+            if mm not in mw_cur: raise SystemExit(f'no molecular weight for {mm}: add it to curation/molecular_weights.csv')
+            mw[mm] = mw_cur[mm]
     bound = np.array([float(tab3[c]['coef_mmol_per_gDW']) if c in tab3 else 0.0 for c in comps])
     is_var = np.array([c in chosen for c in comps])
     out = {}
@@ -269,12 +280,26 @@ def main():
             if c in chosen: B[k] = bound[k] + free[c] * rel[c][cond]
         out[cond] = B
 
-    say('STEP 8  mass renormalisation (fixed part rescaled, measured differences kept)')
     MW = np.array([mw[c] for c in comps])
     ref_B = bound + np.array([free.get(c, 0.0) if c in chosen else 0.0 for c in comps])   # average line, r = 1
     M0 = float(ref_B @ MW)
     fixed_scale = {}
-    for cond in ('WW', 'DS'):
+    if PARAM['mass_mode'] == '1g':
+      # BioModTool (Dupont Thibert et al., Bioinformatics): composition data "normalized so that the total mass
+      # recovered from all data corresponds to 1 g of dry weight"; Schulz et al. 2021 PLoS Comput Biol 17:e1008528:
+      # BOF "scaled so that consumed metabolites for a unit flux through it sums to 1 g gCDW-1" (molecular weights).
+      # -> every coefficient of a line's BOF times 1000 / (its mass in mg); ATP maintenance stays as given
+      #    (BioModTool: energy requirements are used directly in mmol/gDW, not normalised).
+      say('STEP 8  mass normalisation to 1 g DW (BioModTool; Schulz et al. 2021): all coefficients x 1000/mass')
+      M0 = 1000.0
+      for cond in ('WW', 'DS'):
+        B = out[cond]; f = M0 / (B.T @ MW)
+        fixed_scale[cond] = f; out[cond] = B * f
+        mass = out[cond].T @ MW
+        say(f'  {cond}: target mass {M0:.1f} mg; per-line mass range {mass.min():.2f}-{mass.max():.2f}; scale factor {f.min():.4f}-{f.max():.4f}')
+    else:
+     say('STEP 8  mass renormalisation (fixed part rescaled, measured differences kept)')
+     for cond in ('WW', 'DS'):
         B = out[cond]
         var_mass = (B[is_var] - bound[is_var].reshape(-1, 1)).T @ MW[is_var]       # free-pool mass per line
         fixed_mass = bound @ MW

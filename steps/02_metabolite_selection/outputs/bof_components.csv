@@ -36,27 +36,27 @@ ATP,yes,no,,0.0029,,,507.18
 GTP,yes,no,,0.0039,,,523.18
 CTP,yes,no,,0.0033,,,483.16
 UTP,yes,no,,0.0029,,,484.14
-(2S)-2-Isopropylmalate,no,yes,PN_Group_27211,0.0,0.001,PLACEHOLDER (1 umol/gDW),176.0676
-1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide,no,yes,PP_Group_17362,0.0,0.001,PLACEHOLDER (1 umol/gDW),338.06275
-4-Coumarate,no,yes,PP_Group_00813,0.0,0.001,PLACEHOLDER (1 umol/gDW),164.04734
-ADP,no,yes,PP_Group_07681,0.0,0.001,PLACEHOLDER (1 umol/gDW),427.0288
-Adenine,no,yes,PP_Group_00119,0.0,0.001,PLACEHOLDER (1 umol/gDW),135.0544
-Adenosine,no,yes,PP_Group_18511,0.0,0.001,PLACEHOLDER (1 umol/gDW),267.0964
-Citrate,no,yes,PN_Group_27033,0.0,0.001,PLACEHOLDER (1 umol/gDW),192.0262
-Coniferyl aldehyde,no,yes,PP_Group_19908,0.0,0.001,PLACEHOLDER (1 umol/gDW),178.0629
-Cytidine,no,yes,PP_Group_18801,0.0,0.001,PLACEHOLDER (1 umol/gDW),243.0853
-D-Glycerate,no,yes,PN_Group_01883,0.0,0.001,PLACEHOLDER (1 umol/gDW),106.0252
-D-Mannose 1-phosphate,no,yes,PN_Group_26291,0.0,0.001,PLACEHOLDER (1 umol/gDW),260.0297
-Ferulate,no,yes,PP_Group_19960,0.0,0.001,PLACEHOLDER (1 umol/gDW),176.0471
-Guanine,no,yes,PP_Group_06960,0.0,0.001,PLACEHOLDER (1 umol/gDW),134.0227
-Guanosine,no,yes,PP_Group_18259,0.0,0.001,PLACEHOLDER (1 umol/gDW),283.0912
-Hypoxanthine,no,yes,PP_Group_20731,0.0,0.001,PLACEHOLDER (1 umol/gDW),136.0384
-Indole,no,yes,PP_Group_21040,0.0,0.001,PLACEHOLDER (1 umol/gDW),117.0577
-Inosine,no,yes,PP_Group_00303,0.0,0.001,PLACEHOLDER (1 umol/gDW),268.08078
-Isocitrate,no,yes,PN_Group_27032,0.0,0.001,PLACEHOLDER (1 umol/gDW),192.0262
-N-Acetyl-L-glutamate,no,yes,PP_Group_02739,0.0,0.001,PLACEHOLDER (1 umol/gDW),189.0635
-S-Adenosyl-L-homocysteine,no,yes,PP_Group_04457,0.0,0.001,PLACEHOLDER (1 umol/gDW),384.1214
-Thymidine,no,yes,PP_Group_00885,0.0,0.001,PLACEHOLDER (1 umol/gDW),242.0901
-Uridine,no,yes,PP_Group_02798,0.0,0.001,PLACEHOLDER (1 umol/gDW),244.0691
-Xanthosine,no,yes,PN_Group_25991,0.0,0.001,PLACEHOLDER (1 umol/gDW),284.0757
-cis-Aconitate,no,yes,PP_Group_00947,0.0,0.001,PLACEHOLDER (1 umol/gDW),174.0163
+(2S)-2-Isopropylmalate,no,yes,PN_Group_27211,0.0,0.001,PLACEHOLDER (1 umol/gDW),176.17
+1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide,no,yes,PP_Group_17362,0.0,0.001,PLACEHOLDER (1 umol/gDW),338.21
+4-Coumarate,no,yes,PP_Group_00813,0.0,0.001,PLACEHOLDER (1 umol/gDW),164.16
+ADP,no,yes,PP_Group_07681,0.0,0.001,PLACEHOLDER (1 umol/gDW),427.2
+Adenine,no,yes,PP_Group_00119,0.0,0.001,PLACEHOLDER (1 umol/gDW),135.13
+Adenosine,no,yes,PP_Group_18511,0.0,0.001,PLACEHOLDER (1 umol/gDW),267.25
+Citrate,no,yes,PN_Group_27033,0.0,0.001,PLACEHOLDER (1 umol/gDW),192.12
+Coniferyl aldehyde,no,yes,PP_Group_19908,0.0,0.001,PLACEHOLDER (1 umol/gDW),178.19
+Cytidine,no,yes,PP_Group_18801,0.0,0.001,PLACEHOLDER (1 umol/gDW),243.22
+D-Glycerate,no,yes,PN_Group_01883,0.0,0.001,PLACEHOLDER (1 umol/gDW),106.08
+D-Mannose 1-phosphate,no,yes,PN_Group_26291,0.0,0.001,PLACEHOLDER (1 umol/gDW),260.13
+Ferulate,no,yes,PP_Group_19960,0.0,0.001,PLACEHOLDER (1 umol/gDW),194.19
+Guanine,no,yes,PP_Group_06960,0.0,0.001,PLACEHOLDER (1 umol/gDW),151.13
+Guanosine,no,yes,PP_Group_18259,0.0,0.001,PLACEHOLDER (1 umol/gDW),283.24
+Hypoxanthine,no,yes,PP_Group_20731,0.0,0.001,PLACEHOLDER (1 umol/gDW),136.11
+Indole,no,yes,PP_Group_21040,0.0,0.001,PLACEHOLDER (1 umol/gDW),117.15
+Inosine,no,yes,PP_Group_00303,0.0,0.001,PLACEHOLDER (1 umol/gDW),268.23
+Isocitrate,no,yes,PN_Group_27032,0.0,0.001,PLACEHOLDER (1 umol/gDW),192.12
+N-Acetyl-L-glutamate,no,yes,PP_Group_02739,0.0,0.001,PLACEHOLDER (1 umol/gDW),189.17
+S-Adenosyl-L-homocysteine,no,yes,PP_Group_04457,0.0,0.001,PLACEHOLDER (1 umol/gDW),384.41
+Thymidine,no,yes,PP_Group_00885,0.0,0.001,PLACEHOLDER (1 umol/gDW),242.23
+Uridine,no,yes,PP_Group_02798,0.0,0.001,PLACEHOLDER (1 umol/gDW),244.2
+Xanthosine,no,yes,PN_Group_25991,0.0,0.001,PLACEHOLDER (1 umol/gDW),284.23
+cis-Aconitate,no,yes,PP_Group_00947,0.0,0.001,PLACEHOLDER (1 umol/gDW),174.11

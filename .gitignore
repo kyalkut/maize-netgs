@@ -18,3 +18,8 @@ netGS/
 # Third-party model files (see input/other_models/README.md)
 input/other_models/*
 !input/other_models/README.md
+
+# Third-party papers and supplements (only the candidate table is tracked)
+literature/anchor_sources/*/
+# Local drafts (emails)
+drafts/

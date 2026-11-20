@@ -9,13 +9,14 @@
   "default_free_frac_aa": 0.05,
   "default_free_other": 0.001,
   "placeholder_scale": 1.0,
+  "mass_mode": "1g",
   "reference_line": "B73",
   "light_uptake": 100.0,
   "atp_maintenance": 30.0
  },
  "n_components": 61,
  "n_varying": 31,
- "M0": 536.29965179,
+ "M0": 1000.0,
  "kept": [
   "(2S)-2-Isopropylmalate",
   "1-(5'-Phosphoribosyl)-5-amino-4-imidazolecarboxamide",

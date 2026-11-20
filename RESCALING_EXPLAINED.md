@@ -32,12 +32,13 @@ Result: 7 Table III amino acids (Glu, Leu, Met, Phe, Thr, Trp, Tyr) + 24 new (in
 | B1 ratio | r = 2^(log2 value − WW mean over 385 lines) | 2^(17.56 − 14.05) = **11.4** |
 | B2 free part | anchor × r | 0.000435 × 11.4 = **0.00495 mmol** |
 | B3 two pools | bound (Table III, fixed; 0 if not in Table III) + free | 0.040 + 0.00495 = 0.045 |
-| B4 equal mass | fixed part × s, s = (536.3 − free mass) / fixed mass | 0.040 × 0.993 + 0.00495 = **0.0447** |
+| B4 mass to 1 g DW | whole recipe × f, f = 1000 mg / recipe mass (BioModTool; Schulz et al. 2021) | (0.040 + 0.00495) × 1.852 = **0.0832** |
 
 - **WW mean for both conditions** so the drought shift is kept (Trp median r: 1.0 WW, 4.5 DS).
 - **Anchors:** 7 amino acids from Shu et al. 2022 (maize leaf, V6, LC-MS; µmol/L × 0.05 = µmol/gDW, assuming 20 mg dry powder in 1 mL); 24 placeholders at 1 µmol/gDW.
 - **Two pools** because Table III amino acids are mostly protein-bound while Zhang measures free pools; scaling the whole coefficient would give 11× Trp in protein.
-- **Equal mass:** target = average recipe, 536.3 mg (Table III alone = 529 mg, about half of dry mass); s between 0.98 and 1.00; free parts untouched.
+- **Mass to 1 g DW (since 18 Nov):** every line's recipe is scaled so its components weigh 1 g, as in BioModTool (Dupont Thibert et al.) and Schulz et al. 2021 (PLoS Comput Biol 17:e1008528). Molecular weights: Table III's own, and for the 24 new metabolites the average MW of the neutral formula (`curation/molecular_weights.csv`; the C4GEM SBML has no formulas). f between 1.82 and 1.87 because Table III lists 529 mg; free parts are scaled too, so Shu's absolute values enter ×1.85. ATP maintenance (30) is not scaled (BioModTool uses energy terms as given in mmol/gDW).
+- *Before 18 Nov:* target = average recipe, 536.3 mg (no source), only the fixed part scaled (s 0.98–1.00): B73 Trp DS 0.040 × 0.993 + 0.00495 = 0.0447. netGS flux patterns are the same with both (per-reaction r 1.00, 76 reactions > 5% beyond growth in both); s_model 0.4955 → 0.2855, absolute fluxes ~7% higher because maintenance is not scaled.
 
 ## `rescaling_trace.csv` columns
 
@@ -49,15 +50,15 @@ Result: 7 Table III amino acids (Glu, Leu, Met, Phe, Thr, Trp, Tyr) + 24 new (in
 | 4 | `4_free_anchor_mmol` | anchor (from `anchors.csv` or placeholder) |
 | 5 | `5_free_part_mmol` | 4 × 3: the rescaled value |
 | 6 | `6_bound_part_tableIII` | fixed protein-bound part |
-| 7 | `7_fixed_part_scale` | s, mass equalisation |
+| 7 | `7_fixed_part_scale` | f, mass to 1 g (old run: s, fixed part only) |
 | 8 | `8_bound_part_scaled` | 6 × 7 |
-| 9 | `9_final_coefficient` | 5 + 8, identical to `biomreaction_*.csv` |
+| 9 | `9_final_coefficient` | (5 + 6) × 7 (old run: 5 + 8), identical to `biomreaction_*.csv` |
 
 ## Checks
 
 - All 385 lines' recipes are feasible in both conditions.
-- Placeholder anchors ×0.1 / ×10: spread between lines 0.2% → 7%, line ranking r = 0.74–0.98. Anchors set the size of differences, not their direction.
+- Placeholder anchors ×0.1 / ×10: spread between lines 0.2% → 7%, line ranking r = 0.65–0.98 (1 g run; was 0.74–0.98 with 536.3 mg). Anchors set the size of differences, not their direction.
 
 ## Choices open for discussion
 
-Name-based matching; 90% coverage and SD ≤ 2.5 thresholds; WW mean as reference; unit conversion of Shu et al.; mass equalised to the average recipe rather than 1 g; 24 placeholder anchors. All are set in `curation/` or in `PARAM` in `bof_pipeline.py`.
+Name-based matching; 90% coverage and SD ≤ 2.5 thresholds; WW mean as reference; unit conversion of Shu et al.; free parts scaled with the rest when going to 1 g (keep Shu's absolute values instead?); 24 placeholder anchors. All are set in `curation/` or in `PARAM` in `bof_pipeline.py`.

@@ -2,6 +2,7 @@
 import sys, os, csv, json, time, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import bof_pipeline as bp
+if os.environ.get('BOF_OUT'): bp.P['out'] = os.environ['BOF_OUT']   # test folders (BOFs read from and results written to it)
 from model_curation import curate
 from netgs_step1 import genotype_fluxes
 OBJ = os.environ.get('NETGS_OBJ', 'paper'); NMAX = int(os.environ.get('NETGS_N', '100000'))

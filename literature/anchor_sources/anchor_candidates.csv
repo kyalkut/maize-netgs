@@ -1,0 +1,25 @@
+model_metabolite,value_nmol_per_gFW,species,tissue_condition,source,location_in_source,file_here,status
+D-Glycerate,413,maize (B73),"3-wk plants, youngest fully expanded leaf, light; mean of pulse+chase (n=15)",Arrivault et al. 2017 J Exp Bot 68:283,Supplementary Table S4 (row Glycerate; 'with chase' mean 413 +/- 141),arrivault2017_maize/erw414_suppl_supplementary_tables_s1_s12.xlsx,maize value; needs DW/FW
+Citrate,1688,Arabidopsis,"rosette, light, 485 ppm CO2 (n=3)",Arrivault et al. 2009 Plant J 59:824,Table 4 p.833,arrivault2009_arabidopsis/arrivault2009_table4.pdf,other species; needs DW/FW
+Isocitrate,49.9,Arabidopsis,"rosette, light, 485 ppm CO2 (n=3)",Arrivault et al. 2009 Plant J 59:824,Table 4 p.833,arrivault2009_arabidopsis/arrivault2009_table4.pdf,other species; needs DW/FW
+cis-Aconitate,22.8,Arabidopsis,"rosette, light, 485 ppm CO2 (n=3); 'Aconitate'",Arrivault et al. 2009 Plant J 59:824,Table 4 p.833,arrivault2009_arabidopsis/arrivault2009_table4.pdf,other species; needs DW/FW
+ADP,24.3,Arabidopsis,"rosette, light, 485 ppm CO2 (n=3)",Arrivault et al. 2009 Plant J 59:824,Table 4 p.833,arrivault2009_arabidopsis/arrivault2009_table4.pdf,other species; needs DW/FW
+Uridine,5.1,Arabidopsis,"10-wk soil plants, wild-type leaf (n=3)",Riegler et al. 2011 New Phytol 191:349,Table 1 (URH leaf),riegler2011_arabidopsis/fulltext.xml,other species; needs DW/FW
+Hypoxanthine,below detection,Arabidopsis,wild-type leaf,Riegler et al. 2011 New Phytol 191:349,Table 1 (URH leaf '-'),riegler2011_arabidopsis/fulltext.xml,no number; below detection limit
+Inosine,below detection,Arabidopsis,wild-type leaf,Riegler et al. 2011 New Phytol 191:349,Table 1 (URH leaf '-'),riegler2011_arabidopsis/fulltext.xml,no number; below detection limit
+Xanthosine,below detection,Arabidopsis,wild-type leaf,Riegler et al. 2011 New Phytol 191:349,Table 1 (URH leaf '-'),riegler2011_arabidopsis/fulltext.xml,no number; below detection limit
+(2S)-2-Isopropylmalate,,,,,,,not found
+AICA ribonucleotide,,,,,,,not found
+4-Coumarate,66.0,maize (cv. Border King),"V5, third youngest leaf, well-watered developmental control (n=3); 10.83 ug/gFW / 164.16 g/mol","Plants 2023 12:101 (doi 10.3390/plants12010101), water deficit and phenolic acids in maize leaves",Table 1 and Figure 2B (units ug/g FW),phenolics_maize_leaf_2023/fulltext.xml + plants-12-00101-g002.jpg,maize value; needs DW/FW
+Ferulate,118.4,maize (cv. Border King),"V5, third youngest leaf, well-watered developmental control (n=3); 23.00 ug/gFW / 194.18 g/mol","Plants 2023 12:101 (doi 10.3390/plants12010101), water deficit and phenolic acids in maize leaves",Table 1 and Figure 2D (units ug/g FW),phenolics_maize_leaf_2023/fulltext.xml + plants-12-00101-g002.jpg,maize value; needs DW/FW
+Coniferyl aldehyde,,,,,,,not found
+Adenine,,,,,,,not found
+Adenosine,,,,,,,not found (wheat leaf ~300 nmol/gDW cited secondhand only)
+Cytidine,,,,,,,not found
+Guanine,,,,,,,not found
+Guanosine,,,,,,,not found
+Indole,,,,,,,not found (maize values only after herbivory)
+D-Mannose 1-phosphate,,,,,,,not found
+N-Acetyl-L-glutamate,,,,,,,not found
+S-Adenosyl-L-homocysteine,,,,,,,not found
+Thymidine,,,,,,,not found

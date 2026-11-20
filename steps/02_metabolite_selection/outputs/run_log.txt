@@ -37,15 +37,15 @@ STEP 5  relative factors (anchor = WW mean, same for both conditions)
 STEP 6  anchors (absolute free-pool amounts, mmol/gDW)
   31 anchors; 24 are placeholders -> replace with literature values in curation/anchors.csv
 STEP 7  two-pool coefficients  b = b_bound + b_free * r
-STEP 8  mass renormalisation (fixed part rescaled, measured differences kept)
-  WW: target mass 536.3 mg; per-line mass range 536.30-536.30; fixed-part scale 0.9839-1.0049
-  DS: target mass 536.3 mg; per-line mass range 536.30-536.30; fixed-part scale 0.9782-1.0037
+STEP 8  mass normalisation to 1 g DW (BioModTool; Schulz et al. 2021): all coefficients x 1000/mass
+  WW: target mass 1000.0 mg; per-line mass range 1000.00-1000.00; scale factor 1.8350-1.8736
+  DS: target mass 1000.0 mg; per-line mass range 1000.00-1000.00; scale factor 1.8235-1.8712
 STEP 9  export
   61 BOF components (31 vary by line) x 385 lines, WW and DS
   rescaling trace: rescaling_trace.csv (long), relative_factors_*.csv, free_pool_mmol_*.csv (metabolites x lines)
 STEP 10 QC: feasibility of every line-specific BOF (single-cell network)
-  WW: max biomass flux per line: min 0.495, mean 0.4962, max 0.4977; infeasible lines: 0
-  DS: max biomass flux per line: min 0.4935, mean 0.4956, max 0.4976; infeasible lines: 0
-  reference B73: WW 0.4967, DS 0.4947
+  WW: max biomass flux per line: min 0.2852, mean 0.2858, max 0.2867; infeasible lines: 0
+  DS: max biomass flux per line: min 0.2842, mean 0.2855, max 0.2868; infeasible lines: 0
+  reference B73: WW 0.2862, DS 0.2849
   energy-loop check: ATP regenerated without light = -0  ->  no loops
   figure: output/qc_bof_coefficients.png

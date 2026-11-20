@@ -1,12 +1,13 @@
 # 03_rescaling
 
-log2 data -> mmol/gDW: relative factor 2^(x - WW mean), x anchor, + Table III part, x mass factor s (536.3 mg).
+log2 data -> mmol/gDW: relative factor 2^(x - WW mean), x anchor, + Table III part, x mass factor f to 1 g DW (BioModTool; Schulz 2021).
 
 **Scripts:** bof_pipeline.py, steps 5-9
 
 **Inputs:**
 - `inputs/anchors.csv` (from `curation/anchors.csv`)
 - `inputs/bof_tableIII.csv` (from `curation/bof_tableIII.csv`)
+- `inputs/molecular_weights.csv` (from `curation/molecular_weights.csv`)
 - `inputs/bof_components.csv` (from `output/bof_components.csv`)
 
 **Outputs:**

@@ -2,7 +2,7 @@
 NETGS_TAG picks the run (default paper_cvxpy_ser; part files from run_netgs_maize.py with NETGS_CHUNK)."""
 import os, glob, json, csv, numpy as np
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
+OUT = os.environ.get('BOF_OUT') or os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
 TAG = os.environ.get('NETGS_TAG', 'paper_cvxpy_ser')
 parts = sorted(glob.glob(os.path.join(OUT, f'netgs_part_DS_{TAG}_[0-9]*.npy')))
 P0 = np.load(parts[0], allow_pickle=True).item(); F = np.full_like(P0['fluxes'], np.nan); status = list(P0['status'])
