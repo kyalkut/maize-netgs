@@ -1,28 +1,30 @@
-# Large third-party data: download Zhang et al. 2021 Additional file 2 into input/ (see README.md)
-input/Zhang2021_AdditionalFile2.xlsx
-steps/**/Zhang2021_AdditionalFile2.xlsx
+# Working results: every run writes code/output/; the files the report uses are copied to results/ (code/make_package.py)
+code/output/
 
-# Cache rebuilt by bof_pipeline.py
-output/cache_zhang.pkl
+# Large third-party data: download Zhang et al. 2021 Additional file 2 into code/input/ (see README.md)
+code/input/Zhang2021_AdditionalFile2.xlsx
 
-# Old bundle
+# SNP genotypes (ZEAMAP AMP VCF, 208 MB; see code/snp_prepare.py)
+code/input/snp/
+
+# Third-party model files (see code/input/other_models/README.md)
+code/input/other_models/*
+!code/input/other_models/README.md
+
+# Third-party papers and supplements (only the candidate table is tracked)
+code/literature/anchor_sources/*/
+
+# Local netGS clone for validation
+netGS/
+
+# Local material (papers, drafts, reports, old bundles)
+Projektarbeit/
+netGS-master/
+reports/
+rescaling_files/
+drafts/
 *.zip
 
 # Python
 __pycache__/
 *.pyc
-
-# Local netGS clone for validation
-netGS/
-
-# Third-party model files (see input/other_models/README.md)
-input/other_models/*
-!input/other_models/README.md
-
-# Third-party papers and supplements (only the candidate table is tracked)
-literature/anchor_sources/*/
-# Local drafts (emails)
-drafts/
-
-# SNP genotypes (ZEAMAP AMP VCF, 208 MB; see snp_prepare.py)
-input/snp/

@@ -1,8 +1,0 @@
-metabolite,feature,r_WW_DS,pct_line,pct_condition,pct_residual_GxE,drought_shift_log2
-L-Glutamate,PP_Group_20515,0.053,52.477,0.124,47.398,0.049
-L-Methionine,PP_Group_00922,0.057,39.422,24.470,36.108,-1.571
-L-Leucine,PP_Group_04087,0.070,50.682,3.603,45.715,-0.378
-L-Threonine,PP_Group_21020,0.097,53.183,2.881,43.936,0.219
-L-Tyrosine,PP_Group_00716,0.123,52.531,5.060,42.409,0.188
-L-Phenylalanine,PP_Group_00892,0.146,54.941,1.395,43.664,0.188
-L-Tryptophan,PP_Group_00384,0.218,20.611,66.026,13.363,2.153
