@@ -1,7 +1,7 @@
 # netGS in maize: code and result files
 
 This folder holds the code and the result files behind the report
-"netGS in maize: what we did, where each number comes from, and why it comes out that way".
+"netGS in maize: what we did, where each number comes from, and why it comes out that way"
 `results/` follows the report's sections; each sub-folder has a README that names the columns behind the numbers in the report.
 `code/` holds every script with its curated inputs and runs as it is; `docs/` holds older explanatory notes.
 `results/` is rebuilt from `code/output/` by `python make_package.py` (run in `code/`).
